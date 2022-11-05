@@ -2,18 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Platform : TerrainObject
+public class Empty : TerrainObject
 {
 
-    public Platform(Vector2 gridPos)
+    public Empty(Vector2 gridPos)
     {
         this.gridPos = gridPos;
     }
 
-
     override
     public TerrainType getType()
     {
-        return TerrainType.Platform;
+        return TerrainType.Empty;
     }
 }
