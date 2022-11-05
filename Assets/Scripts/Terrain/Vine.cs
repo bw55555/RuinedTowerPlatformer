@@ -5,7 +5,7 @@ using UnityEngine;
 public class Vine : TerrainObject
 {
 
-    public Vine(Vector2 gridPos)
+    public Vine(Vector2Int gridPos)
     {
         this.gridPos = gridPos;
     }

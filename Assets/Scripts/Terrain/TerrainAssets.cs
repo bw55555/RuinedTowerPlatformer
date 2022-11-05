@@ -7,6 +7,7 @@ public class TerrainAssets : MonoBehaviour
     // Start is called before the first frame update
     public GameObject platform;
     public GameObject vine;
+    public GameObject door;
     public static TerrainAssets Instance;
 
     private void Awake()
@@ -22,6 +23,7 @@ public class TerrainAssets : MonoBehaviour
         {
             case TerrainType.Platform: return Instantiate(platform, new Vector3(xpos, ypos, 0), Quaternion.identity);
             case TerrainType.Vine: return Instantiate(vine, new Vector3(xpos, ypos, 0), Quaternion.identity);
+            case TerrainType.Door: return Instantiate(door, new Vector3(xpos, ypos, 0), Quaternion.identity);
             default: return null;
         }
         
