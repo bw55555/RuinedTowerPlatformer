@@ -2,16 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Empty : TerrainObject
+public class Door : TerrainObject
 {
 
-    public Empty()
+    public Door(Vector2Int gridPos)
     {
+        this.gridPos = gridPos;
     }
+
 
     override
     public TerrainType getType()
     {
-        return TerrainType.Empty;
+        return TerrainType.Door;
     }
 }
