@@ -33,29 +33,61 @@ public class TerrainGeneration : MonoBehaviour
             
         }
 
+
+        generatePlatforms(top, bottom);
+
+        generateVines(top, bottom);
+    }
+
+    void generatePlatforms(int top, int bottom)
+    {
         int currLine = top;
         int randomIncr;
         while (currLine < bottom)
         {
             createPlatformOnLine(currLine);
-            randomIncr = Random.Range(0, 3);
+            randomIncr = System.Math.Max(0, Random.Range(0, 4) - Random.Range(0, 1));
             currLine += randomIncr;
-            
+        }
+    }
+
+    void generateVines(int top, int bottom)
+    {
+        int currLine = top;
+        int randomIncr;
+        while (currLine < bottom)
+        {
+            createVineOnLine(currLine);
+            randomIncr = Random.Range(0, 5);
+            currLine += randomIncr;
         }
     }
 
     void createPlatformOnLine(int line)
     {
-        int gridSize = Random.Range(3, 6);
+        int gridSize = Random.Range(3, 8);
         int gridStart = Random.Range(0, width - gridSize);
-        Debug.Log(line + " " + gridSize + " " + gridStart + " " + grid[line].Count);
+        //Debug.Log(line + " " + gridSize + " " + gridStart + " " + grid[line].Count);
         for (int i = gridStart; i < gridStart + gridSize; i++)
         {
+            if (line >= 2 && grid[line - 2][i] != null && grid[line-2][i].getType() == TerrainType.Platform)
+            {
+                grid[line-1][i] = new Platform(new Vector2(line - 1, i));
+            }
             grid[line][i] = new Platform(new Vector2(line, i));
         }
     }
 
-    
+    void createVineOnLine(int line)
+    {
+        if (line < 10) { return; }
+        int col = Random.Range(0, width);
+        int vineSize = Random.Range(3, 6);
+        for (int i = line - vineSize + 1; i <= line; i++)
+        {
+            grid[i][col] = new Vine(new Vector2(i, col));
+        }
+    }
 
     void instantiate()
     {

@@ -197,7 +197,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   platform: {fileID: 6043205147425256754, guid: 5d2eddd7cab88094f832b4386c4e01e6,
     type: 3}
-  vines: {fileID: 0}
+  vine: {fileID: 8356868822420985083, guid: 4ac97578b0fe57d43b60db09bad6ac46, type: 3}
 --- !u!4 &459329726
 Transform:
   m_ObjectHideFlags: 0

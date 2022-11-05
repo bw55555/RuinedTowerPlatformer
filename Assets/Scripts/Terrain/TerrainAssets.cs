@@ -6,7 +6,7 @@ public class TerrainAssets : MonoBehaviour
 {
     // Start is called before the first frame update
     public GameObject platform;
-    public GameObject vines;
+    public GameObject vine;
     public static TerrainAssets Instance;
 
     private void Awake()
@@ -16,19 +16,14 @@ public class TerrainAssets : MonoBehaviour
     }
 
 
-    public GameObject createPlatform(float xpos, float ypos)
+    public GameObject createObject(TerrainType type, float xpos, float ypos)
     {
-        return Instantiate(platform, new Vector3(xpos, ypos, 0), Quaternion.identity);
-    }
-
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
+        switch (type)
+        {
+            case TerrainType.Platform: return Instantiate(platform, new Vector3(xpos, ypos, 0), Quaternion.identity);
+            case TerrainType.Vine: return Instantiate(vine, new Vector3(xpos, ypos, 0), Quaternion.identity);
+            default: return null;
+        }
         
     }
 }
