@@ -9,9 +9,6 @@ public class SkillSlot : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Skill s = SkillContainer.Instance.getSkill(type);
-        s.useSkill();
-        s.Active = true;
     }
 
     // Update is called once per frame

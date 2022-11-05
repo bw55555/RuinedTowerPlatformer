@@ -4,10 +4,10 @@ using UnityEngine;
 
 public enum SkillType
 {
-    DoubleJump = 0,
-    Dash = 1,
-    FeatherFall = 2,
-
+    Attack = 0,
+    DoubleJump = 1,
+    Dash = 2,
+    FeatherFall = 3,
 }
 
 public class SkillContainer : MonoBehaviour
@@ -22,7 +22,9 @@ public class SkillContainer : MonoBehaviour
     {
         Instance = this;
         skills = new Skill[numSkills];
+        addSkill(SkillType.Attack, 70.0f);
         addSkill(SkillType.DoubleJump, 120f);
+        getSkill(SkillType.Attack).Active = true;
         addSkill(SkillType.Dash, 120f);
         addSkill(SkillType.FeatherFall, 120f);
     }

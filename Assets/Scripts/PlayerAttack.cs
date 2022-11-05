@@ -14,10 +14,13 @@ public class PlayerAttack : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            Debug.Log("es");
-            Attack();
+            Skill s = SkillContainer.Instance.getSkill(SkillType.Attack);
+            if (s.isReady())
+            {
+                s.useSkill();
+                Attack();
+            }
         }
-    }
 
     void Attack()
     {
