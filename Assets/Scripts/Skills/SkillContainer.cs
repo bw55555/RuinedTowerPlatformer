@@ -24,9 +24,11 @@ public class SkillContainer : MonoBehaviour
         skills = new Skill[numSkills];
         addSkill(SkillType.Attack, 70.0f);
         addSkill(SkillType.DoubleJump, 120f);
-        getSkill(SkillType.Attack).Active = true;
+        
         addSkill(SkillType.Dash, 120f);
         addSkill(SkillType.FeatherFall, 120f);
+
+        getSkill(SkillType.Attack).Active = true;
     }
 
     void Start()

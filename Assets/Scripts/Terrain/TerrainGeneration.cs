@@ -9,7 +9,7 @@ public class TerrainGeneration : MonoBehaviour
 
     
 
-    public int platform_spacing = 3;
+    public float platform_spacing = 2.5f;
     public int platform_minSize = 3;
     public int platform_maxSize = 8;
     public int vine_spacing = 10;
@@ -56,12 +56,12 @@ public class TerrainGeneration : MonoBehaviour
 
     void generatePlatforms(int top, int bottom)
     {
-        int currLine = top;
-        int randomIncr;
+        float currLine = top;
+        float randomIncr;
         while (currLine < bottom)
         {
-            createPlatformOnLine(currLine);
-            randomIncr = Random.Range(0, platform_spacing);
+            createPlatformOnLine((int) currLine);
+            randomIncr = Random.Range(0.0f, platform_spacing);
             currLine += randomIncr;
         }
     }
