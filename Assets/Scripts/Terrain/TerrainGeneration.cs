@@ -7,6 +7,8 @@ public class TerrainGeneration : MonoBehaviour
     public int width;
     public int height;
 
+    
+
     public int platform_spacing = 3;
     public int platform_minSize = 3;
     public int platform_maxSize = 8;

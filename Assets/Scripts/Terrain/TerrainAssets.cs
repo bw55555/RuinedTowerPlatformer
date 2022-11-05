@@ -1,13 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class TerrainAssets : MonoBehaviour
 {
     // Start is called before the first frame update
-    public GameObject platform;
-    public GameObject vine;
-    public GameObject door;
+    public TileBase platform;
+    public TileBase vine;
+    public TileBase door;
     public static TerrainAssets Instance;
 
     private void Awake()
@@ -16,16 +17,19 @@ public class TerrainAssets : MonoBehaviour
 
     }
 
-
-    public GameObject createObject(TerrainType type, float xpos, float ypos)
+    public Tilemap platformTileMap;
+    public Tilemap vineTileMap;
+    public Tilemap doorTileMap;
+    public void createObject(TerrainType type, int xpos, int ypos)
     {
         switch (type)
         {
-            case TerrainType.Platform: return Instantiate(platform, new Vector3(xpos, ypos, 0), Quaternion.identity);
-            case TerrainType.Vine: return Instantiate(vine, new Vector3(xpos, ypos, 0), Quaternion.identity);
-            case TerrainType.Door: return Instantiate(door, new Vector3(xpos, ypos, 0), Quaternion.identity);
-            default: return null;
+            case TerrainType.Platform: platformTileMap.SetTile(new Vector3Int(xpos, ypos, 0), platform); return;
+            case TerrainType.Vine: vineTileMap.SetTile(new Vector3Int(xpos, ypos, 0), vine); return;
+            case TerrainType.Door: doorTileMap.SetTile(new Vector3Int(xpos, ypos, 0), door); return;
         }
-        
+
     }
+
+
 }
