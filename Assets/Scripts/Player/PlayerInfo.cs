@@ -78,6 +78,10 @@ public class PlayerInfo : MonoBehaviour
             healthBar.setValue(currentHealth);
             currentHealth = maxHealth;
         }
+        if (CurrentHealth <= 0)
+        {
+            score = 0;
+        }
         
     }
 
