@@ -25,7 +25,6 @@ public class Enemy : MonoBehaviour
     private float flipCd = 0f;
 
     private float stunTime = 0f;
-    private float angle = 0;
     // Start is called before the first frame update
 
     private Animator anim;

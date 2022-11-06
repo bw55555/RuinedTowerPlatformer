@@ -11,9 +11,20 @@ public class PlayerMovement : MonoBehaviour
     public Animator animator;
     bool paused;
     bool jump = false;
+    private Rigidbody2D rb;
 
-        // Update is called once per frame
-        void Update()
+    private void Awake()
+    {
+        rb = GetComponent<Rigidbody2D>();
+    }
+
+    private void Start()
+    {
+        //controller.OnLandEvent.AddListener(OnLanding);
+    }
+
+    // Update is called once per frame
+    void Update()
     {
         paused = menu.GameIsPaused;
         horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
@@ -26,7 +37,7 @@ public class PlayerMovement : MonoBehaviour
 
         if(!paused)
         {
-            
+            animator.SetFloat("VSpeed", rb.velocity.y);
             animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
         }
         else

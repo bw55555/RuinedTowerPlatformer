@@ -25,6 +25,6 @@ public class SkillSlot : MonoBehaviour
     private void FixedUpdate()
     {
         Skill s = SkillContainer.Instance.getSkill(type);
-        s.Cooldown = s.Cooldown - Time.deltaTime;
+        s.CurrentCooldown = s.CurrentCooldown - Time.deltaTime;
     }
 }

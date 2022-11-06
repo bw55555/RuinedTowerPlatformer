@@ -27,18 +27,21 @@ public class SkillContainer : MonoBehaviour
     {
         Instance = this;
         skills = new Skill[numSkills];
-        addSkill(SkillType.Attack, 70.0f);
-        addSkill(SkillType.DoubleJump, 120f);
+
+        //cooldowns in seconds
+        addSkill(SkillType.Attack, 0.6f);
+        addSkill(SkillType.DoubleJump, 0.4f);
         
-        addSkill(SkillType.Dash, 120f);
-        addSkill(SkillType.FeatherFall, 1200f);
+        addSkill(SkillType.Dash, 2f);
+        addSkill(SkillType.FeatherFall, 20f);
         addSkill(SkillType.Thornmail, 0f);
-        addSkill(SkillType.Invincibility, 7200f);
+        addSkill(SkillType.Invincibility, 100f);
         addSkill(SkillType.Extra_Damage, 0f);
         addSkill(SkillType.Key, 0f);
-        addSkill(SkillType.Health_Potion, 3600f);
+        addSkill(SkillType.Health_Potion, 60f);
 
         getSkill(SkillType.Attack).Active = true;
+        getSkill(SkillType.DoubleJump).Active = true;
     }
 
     void Start()
@@ -54,6 +57,16 @@ public class SkillContainer : MonoBehaviour
     public Skill getSkill(SkillType t)
     {
         return skills[(int) t];
+    }
+
+    public bool isSkillReady(SkillType t)
+    {
+        return getSkill(t).isReady();
+    }
+
+    public void useSkill(SkillType t)
+    {
+        getSkill(t).useSkill();
     }
 
     // Update is called once per frame
