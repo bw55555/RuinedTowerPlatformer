@@ -3746,8 +3746,8 @@ GameObject:
   m_Component:
   - component: {fileID: 977407315}
   - component: {fileID: 977407314}
-  - component: {fileID: 977407313}
   - component: {fileID: 977407316}
+  - component: {fileID: 977407313}
   m_Layer: 0
   m_Name: free skill
   m_TagString: Untagged
@@ -3764,7 +3764,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 977407312}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ede0ca634f51503409cb999b1c7ec6dc, type: 3}
+  m_Script: {fileID: 11500000, guid: 3d21e01e6562d004cbbe33eef42496a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   prompt: {fileID: 1382500605}
