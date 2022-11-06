@@ -35,10 +35,10 @@ public class SkillContainer : MonoBehaviour
         addSkill(SkillType.Dash, 2f);
         addSkill(SkillType.FeatherFall, 20f);
         addSkill(SkillType.Thornmail, 0f);
-        addSkill(SkillType.Invincibility, 100f);
+        addSkill(SkillType.Invincibility, 100f, 0);
         addSkill(SkillType.Extra_Damage, 0f);
-        addSkill(SkillType.Key, 0f);
-        addSkill(SkillType.Health_Potion, 60f);
+        addSkill(SkillType.Key, 0f, 0);
+        addSkill(SkillType.Health_Potion, 60f, 0);
 
         getSkill(SkillType.Attack).Active = true;
         getSkill(SkillType.DoubleJump).Active = true;
@@ -49,9 +49,9 @@ public class SkillContainer : MonoBehaviour
         
     }
 
-    void addSkill(SkillType t, float cooldown)
+    void addSkill(SkillType t, float cooldown, int charges = -1)
     {
-        skills[(int) t] = new Skill((int)t, cooldown);
+        skills[(int) t] = new Skill((int)t, cooldown, charges);
     }
 
     public Skill getSkill(SkillType t)

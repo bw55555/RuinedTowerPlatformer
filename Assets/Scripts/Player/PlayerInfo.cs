@@ -5,8 +5,7 @@ using UnityEngine;
 public class PlayerInfo : MonoBehaviour
 {
 
-    public static float m_iframes = 30f;
-    public static PlayerInfo Instance;
+    private float iframe_secs = 0.5f;
 
     private int maxHealth = 100;
     private int currentHealth = 100;
@@ -14,13 +13,9 @@ public class PlayerInfo : MonoBehaviour
     private int level = 1;
     private int score = 0;
     private float iframes = 0;
-    private int attack = 5;
-    //add health bar later
+    private int attack = 100;
 
-    private void Awake()
-    {
-        Instance = this;
-    }
+    public ProgressBar healthBar;
 
     public int MaxHealth { get => maxHealth; set => maxHealth = value; }
     public int CurrentHealth { get => currentHealth; set => currentHealth = value; }
@@ -59,20 +54,28 @@ public class PlayerInfo : MonoBehaviour
         this.maxHealth += 10;
         this.currentHealth = maxHealth;
         this.attack += 2;
+
+        healthBar.setMaxValue(maxHealth);
     }
 
     public void takeDamage(int damage)
     {
         if (iframes > 0) { return; }
-        iframes = m_iframes;
+        iframes = iframe_secs;
         currentHealth -= damage;
+        healthBar.setValue(currentHealth);
     }
 
+    private void Start()
+    {
+        healthBar.setMaxValue(maxHealth);
+    }
     // Update is called once per frame
     void Update()
     {
         if (currentHealth > maxHealth)
         {
+            healthBar.setValue(currentHealth);
             currentHealth = maxHealth;
         }
         
