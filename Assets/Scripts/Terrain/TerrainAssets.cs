@@ -14,6 +14,11 @@ public class TerrainAssets : MonoBehaviour
     public GameObject door;
     public static TerrainAssets Instance;
 
+    public GameObject skeleton;
+    public GameObject slime;
+    public GameObject knight;
+    public GameObject demon;
+
     private void Awake()
     {
         Instance = this;
@@ -35,5 +40,14 @@ public class TerrainAssets : MonoBehaviour
 
     }
 
-
+    public void createEnemy(EnemyType type, float xpos, float ypos)
+    {
+        switch (type)
+        {
+            case EnemyType.Slime: Instantiate(slime, new Vector3(xpos, ypos, 0), Quaternion.identity); return;
+            case EnemyType.Skeleton: Instantiate(skeleton, new Vector3(xpos, ypos, 0), Quaternion.identity); return;
+            case EnemyType.Knight: Instantiate(knight, new Vector3(xpos, ypos, 0), Quaternion.identity); return;
+            case EnemyType.Demon: Instantiate(demon, new Vector3(xpos, ypos, 0), Quaternion.identity); return;
+        }
+    }
 }

@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2184678531303752249}
   - component: {fileID: 2184678531303752230}
   - component: {fileID: 2736055864285003440}
+  - component: {fileID: 1254190279677707898}
   m_Layer: 0
   m_Name: SlimeEnemy
   m_TagString: Untagged
@@ -166,8 +167,27 @@ MonoBehaviour:
   aggroRange: 20
   m_WhatIsGround:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 4294967295
   m_GroundCheck: {fileID: 2184678531759802365}
+--- !u!95 &1254190279677707898
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2184678531303752231}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7acaf7da9b8319c458ba79dbff58951c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &2184678531759802362
 GameObject:
   m_ObjectHideFlags: 0
