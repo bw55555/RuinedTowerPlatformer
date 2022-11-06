@@ -103,7 +103,10 @@ public class PlayerInfo : MonoBehaviour
              takeDamage(maxHealth/3);
              speedBeforeLanding = 0;
         }     
-        
+        if (currentHealth <= 0)
+        {
+            score = 0;
+        }
     }
 
     private void FixedUpdate()
