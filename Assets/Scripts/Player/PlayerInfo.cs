@@ -13,7 +13,7 @@ public class PlayerInfo : MonoBehaviour
     private int level = 1;
     private int score = 0;
     private float iframes = 0;
-    private int attack = 100;
+    private int attack = 20;
 
     public ProgressBar healthBar;
 
