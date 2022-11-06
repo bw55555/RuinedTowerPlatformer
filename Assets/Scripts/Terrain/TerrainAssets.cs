@@ -29,7 +29,7 @@ public class TerrainAssets : MonoBehaviour
             case TerrainType.Platform: platformTileMap.SetTile(new Vector3Int(xpos, ypos, 0), platform); return;
             case TerrainType.Wall: platformTileMap.SetTile(new Vector3Int(xpos, ypos, 0), wall); return;
             case TerrainType.Vine: vineTileMap.SetTile(new Vector3Int(xpos, ypos, 0), vine); return;
-            case TerrainType.Torch: Instantiate(torch, new Vector3Int(xpos, ypos, 0), Quaternion.identity); return; return;
+            case TerrainType.Torch: Instantiate(torch, new Vector3Int(xpos, ypos, 0), Quaternion.identity); return;
             case TerrainType.Door: Instantiate(door, new Vector3Int(xpos, ypos, 0), Quaternion.identity); return;
         }
 

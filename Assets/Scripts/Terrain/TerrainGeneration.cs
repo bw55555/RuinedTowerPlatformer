@@ -16,6 +16,7 @@ public class TerrainGeneration : MonoBehaviour
     public int door_minspacing = 15;
     public int door_maxspacing = 25;
     public int door_findRange = 25;
+    public int torch_spacing = 7;
 
     private List<List<TerrainObject>> grid = new List<List<TerrainObject>>();
 
@@ -125,7 +126,7 @@ public class TerrainGeneration : MonoBehaviour
 
     bool canPlaceTorch(int x, int y)
     {
-        int torch_spacing = 4;
+        
         for (int i = x - torch_spacing; i <= x + torch_spacing; i++)
         {
             for (int j = y - torch_spacing; j <= y + torch_spacing; j++)
