@@ -16,9 +16,15 @@ public class SkillSlot : MonoBehaviour
     {
         
         Skill s = SkillContainer.Instance.getSkill(type);
-        s.decreaseCooldown();
+        
         gameObject.SetActive(s.Active);
         cooldown.transform.localScale = new Vector3(1, Mathf.Max(0f, s.CurrentCooldown / s.Cooldown), 1);
 
+    }
+
+    private void FixedUpdate()
+    {
+        Skill s = SkillContainer.Instance.getSkill(type);
+        s.Cooldown = s.Cooldown - Time.deltaTime;
     }
 }

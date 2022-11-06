@@ -75,9 +75,14 @@ public class PlayerInfo : MonoBehaviour
         {
             currentHealth = maxHealth;
         }
+        
+    }
+
+    private void FixedUpdate()
+    {
         if (iframes > 0)
         {
-            iframes -= 1f;
+            iframes -= Time.deltaTime;
         }
     }
 }
