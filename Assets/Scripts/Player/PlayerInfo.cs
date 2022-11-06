@@ -24,6 +24,17 @@ public class PlayerInfo : MonoBehaviour
     public int Score { get => score; set => score = value; }
     public int Attack { get => attack; set => attack = value; }
 
+    //code for fall damage
+    private Rigidbody2D rb2D;
+    private float speedBeforeLanding;
+    private float GetVerticalSpeed() => rb2D.velocity.y;
+
+    private void Awake()
+    {
+        rb2D = GetComponent<Rigidbody2D>();
+    }
+
+
     void respawn()
     {
         currentHealth = maxHealth;
@@ -78,10 +89,20 @@ public class PlayerInfo : MonoBehaviour
             healthBar.setValue(currentHealth);
             currentHealth = maxHealth;
         }
-        if (CurrentHealth <= 0)
+        //code for Fall Damage
+         if (GetVerticalSpeed() < 0)
         {
-            score = 0;
+        speedBeforeLanding = GetVerticalSpeed();
         }
+
+        if (speedBeforeLanding < -20 && speedBeforeLanding > -30 && GetVerticalSpeed() == 0) {
+             takeDamage(maxHealth/10);
+             speedBeforeLanding = 0;
+        }     
+        if (speedBeforeLanding < -30 && GetVerticalSpeed() == 0) {
+             takeDamage(maxHealth/3);
+             speedBeforeLanding = 0;
+        }     
         
     }
 
@@ -91,5 +112,6 @@ public class PlayerInfo : MonoBehaviour
         {
             iframes -= Time.deltaTime;
         }
+        
     }
 }

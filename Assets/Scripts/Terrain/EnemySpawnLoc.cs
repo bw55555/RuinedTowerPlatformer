@@ -25,11 +25,11 @@ public class EnemySpawnLoc : TerrainObject
     {
         return TerrainType.EnemySpawnLoc;
     }
-    /*
+    
     override
         public void instantiate()
     {
-
+        TerrainAssets.Instance.createEnemy(enemyType, gridPos.y + 0.5f, -gridPos.x + 1.5f);
     }
-    */
+    
 }

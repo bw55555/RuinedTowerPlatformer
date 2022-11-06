@@ -7,7 +7,7 @@ public class EnemyMovement : MonoBehaviour
     private Rigidbody2D rb;
 
     public bool facingRight = true;
-    private Transform player;
+    
     public float moveSpeed = 1f;
     private float aggroTime = 0f;
     //public int enemyType;
@@ -20,6 +20,9 @@ public class EnemyMovement : MonoBehaviour
 
     private Animator anim;
 
+    private Enemy enemy;
+    private Transform player;
+
     [SerializeField] private LayerMask m_WhatIsGround;                          // A mask determining what is ground to the character
     [SerializeField] private Transform m_GroundCheck;                           // A position marking where to check if the player is grounded.
     const float k_GroundedRadius = .06f; // Radius of the overlap circle to determine if grounded
@@ -28,13 +31,12 @@ public class EnemyMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
-        GameObject[] playerarr;
         if (player == null)
         {
+            GameObject[] playerarr;
             playerarr = GameObject.FindGameObjectsWithTag("Player");
             player = playerarr[0].transform;
         }
-        
         //healthBar.SetCurrent(currentHealth);
         //healthBar.SetMax(maxHealth);
     }
@@ -47,13 +49,13 @@ public class EnemyMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (player == null)
+        if (rb.velocity.x * (facingRight ? 1 : -1) < 0)
         {
-            return;
+            Debug.Log("unflipped: " + rb.velocity.x + " " + facingRight);
+            Flip(true);
+            Debug.Log("flipped: " + rb.velocity.x + " " + facingRight);
         }
-
-        //animator to set direction here
-
+        anim.SetFloat("Speed", Mathf.Abs(rb.velocity.x));
     }
 
     void Flip()
@@ -62,7 +64,7 @@ public class EnemyMovement : MonoBehaviour
     }
     void Flip(bool overrideCd)
     {
-        if (flipCd > 0 || !overrideCd) { return; }
+        if (flipCd > 0 && !overrideCd) { return; }
         flipCd = 2f;
         facingRight = !facingRight;
 
@@ -78,7 +80,6 @@ public class EnemyMovement : MonoBehaviour
         aggroTime -= Time.deltaTime;
         if (Vector2.SqrMagnitude(player.transform.position - transform.position) < aggroRange)
         {
-            Debug.Log(Vector2.SqrMagnitude(player.transform.position - transform.position));
             aggroTime = m_aggroSecs_outOfRange;
         }
         if (stunTime < 0)
@@ -97,12 +98,7 @@ public class EnemyMovement : MonoBehaviour
             }
         }
 
-        if (rb.velocity.x * (facingRight ? 1 : -1) < 0)
-        {
-            Debug.Log("unflipped: " + rb.velocity.x + " " + facingRight);
-            Flip(true);
-            Debug.Log("flipped: " + rb.velocity.x + " " + facingRight);
-        }
+        
     }
 
     public void Patrol()
