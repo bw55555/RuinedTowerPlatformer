@@ -304,6 +304,36 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &769728806
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 769728807}
+  m_Layer: 8
+  m_Name: info
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &769728807
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 769728806}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3081991275063819009}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &916878889
 GameObject:
   m_ObjectHideFlags: 0
@@ -709,10 +739,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2c4c589103f6a343a20a25774dab8a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  platform: {fileID: 6043205147425256754, guid: 5d2eddd7cab88094f832b4386c4e01e6,
-    type: 3}
-  vine: {fileID: 8356868822420985083, guid: 4ac97578b0fe57d43b60db09bad6ac46, type: 3}
-  door: {fileID: 2238554693658992109, guid: 82bf3ee87bf104a44b47df814cfdd207, type: 3}
+  platform: {fileID: 0}
+  vine: {fileID: 0}
+  door: {fileID: 0}
+  platformTileMap: {fileID: 0}
+  vineTileMap: {fileID: 0}
+  doorTileMap: {fileID: 0}
 --- !u!4 &1733670623
 Transform:
   m_ObjectHideFlags: 0
@@ -994,6 +1026,7 @@ Transform:
   - {fileID: 3081991274563787775}
   - {fileID: 71705931}
   - {fileID: 916878890}
+  - {fileID: 769728807}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
