@@ -15,6 +15,7 @@ public class CharacterController2D : MonoBehaviour
 	
 
 	private float inAirTime = 0.0f;
+	private float onGroundTime = 0.0f;
 
 	const float k_GroundedRadius = .4f; // Radius of the overlap circle to determine if grounded
 	private bool m_Grounded;            // Whether or not the player is grounded.
@@ -53,6 +54,7 @@ public class CharacterController2D : MonoBehaviour
 
 		// The player is grounded if a circlecast to the groundcheck position hits anything designated as ground
 		// This can be done using layers instead but Sample Assets will not overwrite your project settings.
+		/*
 		Collider2D[] colliders = Physics2D.OverlapCircleAll(m_GroundCheck.position, k_GroundedRadius, m_WhatIsGround);
 		for (int i = 0; i < colliders.Length; i++)
 		{
@@ -62,7 +64,22 @@ public class CharacterController2D : MonoBehaviour
 				if (!wasGrounded)
 					OnLandEvent.Invoke();
 			}
+		}*/
+
+		if (m_Rigidbody2D.velocity.y > -0.01 && m_Rigidbody2D.velocity.y < 0.01)
+		{
+			onGroundTime += Time.deltaTime;
+			if (onGroundTime > 0.02f)
+			{
+				m_Grounded = true;
+				if (!wasGrounded)
+					OnLandEvent.Invoke();
+			}
 		}
+		else
+        {
+			onGroundTime = 0.0f;
+        }
 
 		if (m_Grounded)
         {
@@ -70,7 +87,6 @@ public class CharacterController2D : MonoBehaviour
 			doubleJumped = false;
         } else {
 			inAirTime += Time.deltaTime;
-			Debug.Log(m_Grounded + " In air: " + inAirTime);
         }
 	}
 
@@ -83,7 +99,6 @@ public class CharacterController2D : MonoBehaviour
 			// If the character has a ceiling preventing them from standing up, keep them crouching
 			if (Physics2D.OverlapCircle(m_CeilingCheck.position, k_CeilingRadius, m_WhatIsGround))
 			{
-				Debug.Log("Somehow crouching");
 				crouch = true;
 			}
 		}

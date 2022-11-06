@@ -17,6 +17,8 @@ public class TerrainGeneration : MonoBehaviour
     public int door_maxspacing = 25;
     public int door_findRange = 25;
     public int torch_spacing = 7;
+    public int enemy_density = 5;
+    public int enemy_spacing = 3;
 
     private List<List<TerrainObject>> grid = new List<List<TerrainObject>>();
 
@@ -113,7 +115,7 @@ public class TerrainGeneration : MonoBehaviour
         {
             for (int y = 0; y < width; y++)
             {
-                if (grid[x][y].getType() == TerrainType.Empty && canPlaceTorch(x, y))
+                if (grid[x][y].getType() == TerrainType.Empty && isSpacedOut(x, y, torch_spacing, TerrainType.Torch))
                 {
                     if (Random.Range(1, torch_chance) == 1)
                     {
@@ -124,16 +126,45 @@ public class TerrainGeneration : MonoBehaviour
         }
     }
 
-    bool canPlaceTorch(int x, int y)
+    void generateMeleeEnemies(int top, int bottom)
+    {
+        TerrainType[] block1 = { TerrainType.Any, TerrainType.Empty, TerrainType.Any };
+        TerrainType[] block2 = { TerrainType.Any, TerrainType.Empty, TerrainType.Any };
+        TerrainType[] block3 = { TerrainType.Any, TerrainType.Empty, TerrainType.Any };
+        TerrainType[] block4 = { TerrainType.Platform, TerrainType.Platform, TerrainType.Platform};
+        TerrainType[][] pattern = new TerrainType[][] {
+            block1, block2, block3, block4
+        };
+        int currLine = top;
+        while (currLine < bottom)
+        {
+            List<Vector2Int> eligibleLocations = findByPattern(currLine, 0, currLine + 10, width, pattern);
+            Debug.Log("Count:" + eligibleLocations.Count);
+            if (eligibleLocations.Count > 0)
+            {
+                Vector2Int randomLoc = eligibleLocations[Random.Range(0, eligibleLocations.Count)];
+                if (isSpacedOut(randomLoc.x, randomLoc.y, enemy_spacing, TerrainType.EnemySpawnLoc))
+                {
+                    EnemyType enemyType = (EnemyType) Random.Range(0, 2);
+                    grid[randomLoc.x + 2][randomLoc.y + 1] = new EnemySpawnLoc(randomLoc + new Vector2Int(2, 1), enemyType);
+                }
+            }
+
+            currLine += Random.Range(0, enemy_density);
+        }
+
+    }
+
+    bool isSpacedOut(int x, int y, int spacing, TerrainType t)
     {
         
-        for (int i = x - torch_spacing; i <= x + torch_spacing; i++)
+        for (int i = x - spacing; i <= x + spacing; i++)
         {
-            for (int j = y - torch_spacing; j <= y + torch_spacing; j++)
+            for (int j = y - spacing; j <= y + spacing; j++)
             {
                 if (i < 0 || i >= grid.Count || j < 0 || j >= width) { continue; }
                     
-                if(grid[i][j].getType() == TerrainType.Torch)
+                if(grid[i][j].getType() == t)
                 {
                     return false;
                 }
@@ -141,20 +172,6 @@ public class TerrainGeneration : MonoBehaviour
         }
         return true;
     }
-
-    /*
-    void generateWallCracks(int top, int bottom)
-    {
-        float currLine = top;
-        float randomIncr;
-        while (currLine < bottom)
-        {
-            createPlatformOnLine((int)currLine);
-            randomIncr = Random.Range(0.0f, platform_spacing);
-            currLine += randomIncr;
-        }
-    }
-    */
 
     void generate(int top, int bottom)
     {
@@ -172,11 +189,10 @@ public class TerrainGeneration : MonoBehaviour
         generatePlatforms(top, bottom);
 
         generateVines(top, bottom);
-
         
-
-
         generateWalls(0, grid.Count);
+
+        generateMeleeEnemies(top, bottom);
 
         generateDoors(top, bottom);
 
@@ -222,11 +238,11 @@ public class TerrainGeneration : MonoBehaviour
         while (currLine < bottom)
         {
             List<Vector2Int> eligibleLocations = findByPattern(currLine, 0, currLine + door_findRange, width, pattern);
-            Debug.Log("Count:" + eligibleLocations.Count);
+            //Debug.Log("Count:" + eligibleLocations.Count);
             if (eligibleLocations.Count > 0)
             {
-                Vector2Int randomLoc = eligibleLocations[Random.Range(0, eligibleLocations.Count - 1)];
-                Debug.Log("RandomLoc:" + randomLoc.x + " " + randomLoc.y);
+                Vector2Int randomLoc = eligibleLocations[Random.Range(0, eligibleLocations.Count)];
+                //Debug.Log("RandomLoc:" + randomLoc.x + " " + randomLoc.y);
                 grid[randomLoc.x + 1][randomLoc.y] = new Air(randomLoc + new Vector2Int(1, 0), false);
                 grid[randomLoc.x + 2][randomLoc.y] = new Door(randomLoc + new Vector2Int(2, 0));
                 currLine = randomLoc.x;
@@ -272,7 +288,7 @@ public class TerrainGeneration : MonoBehaviour
             {
                 if (matchPattern(i, j, pattern))
                 {
-                    Debug.Log(i + " " + j);
+                    //Debug.Log(i + " " + j);
                     patternMatches.Add(new Vector2Int(i, j));
                 }
             }

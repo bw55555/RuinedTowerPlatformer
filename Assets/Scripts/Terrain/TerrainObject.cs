@@ -9,6 +9,7 @@ public enum TerrainType
     Door,
     Wall,
     Torch,
+    EnemySpawnLoc,
     Air,
     Empty, 
     Any
@@ -39,7 +40,7 @@ abstract public class TerrainObject
         return this.overwritable;
     }
 
-    public void instantiate()
+    virtual public void instantiate()
     {
         TerrainAssets.Instance.createObject(getType(), gridPos.y, -gridPos.x);
     }

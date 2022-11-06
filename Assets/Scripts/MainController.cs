@@ -50,7 +50,7 @@ public class MainController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        distanceBar.setValue(Mathf.Abs(player.position.y));
+        distanceBar.setValue(Mathf.Clamp(-player.position.y, 0, endHeight()));
     }
 
     public int endHeight()

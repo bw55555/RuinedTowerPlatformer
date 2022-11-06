@@ -14,6 +14,8 @@ public class Enemy : MonoBehaviour
 
     private float flashTime = 0f;
 
+    private float maxFlashTime = 0.3f;
+
     public int CurrentHealth { get => currentHealth; set => currentHealth = value; }
 
     private void Awake()
@@ -27,11 +29,7 @@ public class Enemy : MonoBehaviour
         
         Debug.Log("took damage", gameObject);
         currentHealth -= damage;
-        //healthBar.SetCurrent(currentHealth, transform.localScale.x < 0);
-        //healthBar.ToggleActive(true);
-        //Vector2 difference = new Vector2(transform.position.x - player.position.x, 0);
-        //difference = difference.normalized * thrust;
-        //rb.AddForce(difference);
+        flashTime = maxFlashTime;
         GetComponent<EnemyMovement>().Stun(0.3f);
 
         if (currentHealth <= 0)
@@ -48,5 +46,19 @@ public class Enemy : MonoBehaviour
         //anim.SetTrigger("Dead");
         GetComponent<Collider2D>().enabled = false;
         Destroy(gameObject, 0.5f);
+    }
+
+    private void FixedUpdate()
+    {
+        if (flashTime > 0)
+        {
+            flashTime -= Time.deltaTime;
+            SpriteRenderer s = gameObject.GetComponent<SpriteRenderer>();
+            s.color = new Color(238, 75, 43);
+            if (flashTime <= 0)
+            {
+                s.color = new Color(255, 255, 255);
+            }
+        } 
     }
 }
