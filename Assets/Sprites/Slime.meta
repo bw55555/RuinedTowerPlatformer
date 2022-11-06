@@ -1,6 +1,15 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
+<<<<<<<< HEAD:Assets/Sprites/Slime.meta
+guid: ef9a0d80e3d97d149bdc12ca1a2bd4fd
+========
+guid: d369612805a57aa44b8cf56724602838
+folderAsset: yes
+>>>>>>>> d9cdd433c362d8606830a5b4e6798752ded6de8a:Assets/Scripts/Enemy.meta
+=======
 guid: 33182ab9d670f64458116f03dff64836
 folderAsset: yes
+>>>>>>> d9cdd433c362d8606830a5b4e6798752ded6de8a
 DefaultImporter:
   externalObjects: {}
   userData: 
