@@ -301,7 +301,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   width: 100
   height: 1000
-  platform_spacing: 3
+  platform_spacing: 1.6
   platform_minSize: 3
   platform_maxSize: 8
   vine_spacing: 10

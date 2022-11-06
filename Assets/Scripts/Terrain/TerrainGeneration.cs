@@ -9,7 +9,7 @@ public class TerrainGeneration : MonoBehaviour
 
     
 
-    public float platform_spacing = 2.5f;
+    public float platform_spacing = 1.6f;
     public int platform_minSize = 3;
     public int platform_maxSize = 8;
     public int vine_spacing = 10;
