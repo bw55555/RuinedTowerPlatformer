@@ -12,6 +12,8 @@ public class Enemy : MonoBehaviour
 
     private int currentHealth;
 
+    private float flashTime = 0f;
+
     public int CurrentHealth { get => currentHealth; set => currentHealth = value; }
 
     private void Awake()

@@ -1,9 +1,5 @@
 fileFormatVersion: 2
-<<<<<<<< HEAD:Assets/EnemyGFX.cs.meta
-guid: 49ba6760b8584f147898eabe1c99d822
-========
-guid: ede0ca634f51503409cb999b1c7ec6dc
->>>>>>>> 726f3616110b23502677b0d4e14f37935b1e73db:Assets/OpenStore.cs.meta
+guid: 24d7bb21f857a20428e0fd1da4dfd8b2
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2

@@ -8,6 +8,7 @@ public enum TerrainType
     Vine,
     Door,
     Wall,
+    Torch,
     Air,
     Empty, 
     Any

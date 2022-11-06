@@ -355,11 +355,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   platform: {fileID: 11400000, guid: 11070530fbbabea4b9e28fb3e4cb43ea, type: 2}
   vine: {fileID: 11400000, guid: 2cd8c50c9428c9f4caeb2bca0177c8d0, type: 2}
-  door: {fileID: 11400000, guid: 2a9fbbdc3eaa99a4bbe4712c04b271df, type: 2}
   wall: {fileID: 11400000, guid: cb74e410a9b8961498cbe88cccf630c5, type: 2}
+  torch: {fileID: 6043205147425256754, guid: 5d2eddd7cab88094f832b4386c4e01e6, type: 3}
+  door: {fileID: 2238554693658992109, guid: 82bf3ee87bf104a44b47df814cfdd207, type: 3}
   platformTileMap: {fileID: 2577608042568152007}
   vineTileMap: {fileID: 2577608043517506152}
-  doorTileMap: {fileID: 2577608043517506152}
+  torchTileMap: {fileID: 0}
 --- !u!1 &2577608043517506155
 GameObject:
   m_ObjectHideFlags: 0
