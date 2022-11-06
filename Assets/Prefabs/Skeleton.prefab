@@ -11,6 +11,9 @@ GameObject:
   - component: {fileID: 5164389713354808227}
   - component: {fileID: 5164389713354808228}
   - component: {fileID: 5164389713354808229}
+  - component: {fileID: 8921583733447153454}
+  - component: {fileID: 7489447702843441149}
+  - component: {fileID: 2682479114453089776}
   m_Layer: 8
   m_Name: Skeleton
   m_TagString: Untagged
@@ -101,3 +104,53 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &8921583733447153454
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5164389713354808230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e02dbd6a278d12b49b47c59a12c77654, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  attack: 10
+  level: 1
+--- !u!114 &7489447702843441149
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5164389713354808230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9159688f36dc11a4a96719320dab0bc2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  facingRight: 1
+  moveSpeed: 3
+  m_aggroSecs_outOfRange: 5
+  aggroRange: 20
+  m_WhatIsGround:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_GroundCheck: {fileID: 0}
+--- !u!114 &2682479114453089776
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5164389713354808230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6da3f93b137fcd438a430644132515c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stunOnAttack: 0
+  attackRange: 0
+  minTimeBetweenAttacks: 0
