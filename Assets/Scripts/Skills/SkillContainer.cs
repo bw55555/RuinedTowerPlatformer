@@ -8,6 +8,11 @@ public enum SkillType
     DoubleJump = 1,
     Dash = 2,
     FeatherFall = 3,
+    Thornmail = 4,
+    Invincibility = 5,
+    Extra_Damage = 6,
+    Key = 7,
+    Health_Potion = 8
 }
 
 public class SkillContainer : MonoBehaviour
