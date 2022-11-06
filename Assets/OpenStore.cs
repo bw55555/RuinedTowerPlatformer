@@ -7,6 +7,11 @@ public class OpenStore : MonoBehaviour
 {
     public Image prompt;
     public GameObject shop;
+
+    void Start()
+    {
+        shop.SetActive(false);
+    }
     void OnTriggerEnter2D(Collider2D col)
     {
         if (col.CompareTag("Player"))
