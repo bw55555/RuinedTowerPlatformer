@@ -25,11 +25,14 @@ public class PlayerInfo : MonoBehaviour
     public int Attack { get => attack; set => attack = value; }
 
     //code for fall damage
-    public Rigidbody2D rb2D;
+    private Rigidbody2D rb2D;
     private float speedBeforeLanding;
     private float GetVerticalSpeed() => rb2D.velocity.y;
 
-
+    private void Awake()
+    {
+        rb2D = GetComponent<Rigidbody2D>();
+    }
 
 
     void respawn()
