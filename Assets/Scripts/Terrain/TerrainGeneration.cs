@@ -7,8 +7,6 @@ public class TerrainGeneration : MonoBehaviour
     public int width = 56;
     public int height;
 
-    
-
     public float platform_spacing = 1.6f;
     public int platform_minSize = 3;
     public int platform_maxSize = 8;
@@ -24,9 +22,14 @@ public class TerrainGeneration : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        createTerrain();
+    }
+
+    void createTerrain()
+    {
         generateSectionStart();
-        generate(10, height);
-        
+        generate(7, height);
+
         instantiate();
     }
 
@@ -65,7 +68,7 @@ public class TerrainGeneration : MonoBehaviour
     void generateSectionEnd()
     {
         int currHeight = grid.Count;
-        for (int i = 0;i<5;i++)
+        for (int i = 0;i<3;i++)
         {
             grid.Add(new List<TerrainObject>());
             for (int j = 0; j < width; j++)
@@ -81,12 +84,13 @@ public class TerrainGeneration : MonoBehaviour
             grid[grid.Count - 1].Add(new Wall(new Vector2Int(grid.Count - 1, j)));
         }
 
-        
+
+        generateWalls(currHeight, grid.Count);
     }
 
     void generateWalls(int top, int bottom)
     {
-        bottom = Mathf.Min(bottom, grid.Count - 1);
+        bottom = Mathf.Min(bottom, grid.Count);
         for (int i = top;i<bottom;i++)
         {
             grid[i][0] = new Wall(new Vector2Int(i, 0));
@@ -128,10 +132,12 @@ public class TerrainGeneration : MonoBehaviour
 
         generateVines(top, bottom);
 
-        //generateSectionEnd();
+        
         generateWalls(0, grid.Count);
 
         generateDoors(top, bottom);
+
+        generateSectionEnd();
     }
 
     void generatePlatforms(int top, int bottom)
