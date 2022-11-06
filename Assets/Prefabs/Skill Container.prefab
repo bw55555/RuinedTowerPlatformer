@@ -44,8 +44,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -3.3, y: 171.1}
-  m_SizeDelta: {x: 527.46466, y: 81.89911}
+  m_AnchoredPosition: {x: -3.3, y: 183.7}
+  m_SizeDelta: {x: 527.46466, y: 56.696106}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &7195612682454374415
 MonoBehaviour:
@@ -199,6 +199,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: ThornmailSlot
       objectReference: {fileID: 0}
+    - target: {fileID: 8247072336756587982, guid: efb4cca2576f6b9478a505d6a8bac050,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 53fc516a6b4e13e4db16b2154791aa26,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: efb4cca2576f6b9478a505d6a8bac050, type: 3}
 --- !u!224 &6255781952215221913 stripped
@@ -309,6 +315,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: DoubleJumpSlot
       objectReference: {fileID: 0}
+    - target: {fileID: 8247072336756587982, guid: efb4cca2576f6b9478a505d6a8bac050,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: e518ba0e1a6b62e46b751f7122262c1e,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: efb4cca2576f6b9478a505d6a8bac050, type: 3}
 --- !u!224 &6255781951654845100 stripped
@@ -419,6 +431,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: HealthPotionSlot
       objectReference: {fileID: 0}
+    - target: {fileID: 8247072336756587982, guid: efb4cca2576f6b9478a505d6a8bac050,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: b5a163e04d1a79340b8041360854f95c,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: efb4cca2576f6b9478a505d6a8bac050, type: 3}
 --- !u!224 &6255781951465334216 stripped
@@ -529,6 +547,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: FeatherFallSlot
       objectReference: {fileID: 0}
+    - target: {fileID: 8247072336756587982, guid: efb4cca2576f6b9478a505d6a8bac050,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 9b66cdcedfe2c23489f917a91b957771,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: efb4cca2576f6b9478a505d6a8bac050, type: 3}
 --- !u!224 &6255781951085461802 stripped
@@ -639,6 +663,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: InvincibilitySlot
       objectReference: {fileID: 0}
+    - target: {fileID: 8247072336756587982, guid: efb4cca2576f6b9478a505d6a8bac050,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 150c2b064cee79e44a6d68ee1a5124e9,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: efb4cca2576f6b9478a505d6a8bac050, type: 3}
 --- !u!224 &6255781950922911247 stripped
@@ -749,6 +779,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: ExtraDamageSlot
       objectReference: {fileID: 0}
+    - target: {fileID: 8247072336756587982, guid: efb4cca2576f6b9478a505d6a8bac050,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: c2a96659a94c3c24d931e2b2a646718d,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: efb4cca2576f6b9478a505d6a8bac050, type: 3}
 --- !u!224 &6255781950709357279 stripped
@@ -859,6 +895,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: DashSlot
       objectReference: {fileID: 0}
+    - target: {fileID: 8247072336756587982, guid: efb4cca2576f6b9478a505d6a8bac050,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 1c3eabaab1378ea47893c181506a43de,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: efb4cca2576f6b9478a505d6a8bac050, type: 3}
 --- !u!224 &6255781950269324464 stripped
@@ -969,6 +1011,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: KeySlot
       objectReference: {fileID: 0}
+    - target: {fileID: 8247072336756587982, guid: efb4cca2576f6b9478a505d6a8bac050,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 7e249ec69b1116b468f0bc6631ff9c44,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: efb4cca2576f6b9478a505d6a8bac050, type: 3}
 --- !u!224 &6255781950260386496 stripped
