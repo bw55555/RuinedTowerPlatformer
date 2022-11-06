@@ -7,88 +7,30 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     public int maxHealth = 100;
-    private Rigidbody2D rb;
+    public int attack = 10;
+    public int level = 1;
+
     private int currentHealth;
-    public float thrust = 3;
-    private Vector2 movement;
-    
-    public bool facingRight = true;
-    private Transform player;
-    public float moveSpeed = 1f;
-    private float aggroTime = 0f;
-    //public int enemyType;
-    public float m_aggroSecs_outOfRange = 5;
-    public float aggroRange = 20f;
-
-    private float flipCd = 0f;
-
-    private float stunTime = 0f;
-    // Start is called before the first frame update
-
-    private Animator anim;
-
-    [SerializeField] private LayerMask m_WhatIsGround;                          // A mask determining what is ground to the character
-    [SerializeField] private Transform m_GroundCheck;                           // A position marking where to check if the player is grounded.
-    const float k_GroundedRadius = .06f; // Radius of the overlap circle to determine if grounded
 
     public int CurrentHealth { get => currentHealth; set => currentHealth = value; }
 
-    void Awake()
+    private void Awake()
     {
-        rb = GetComponent<Rigidbody2D>();
-        anim = GetComponent<Animator>();
-        GameObject[] playerarr;
-        if (player == null)
-        {
-            playerarr = GameObject.FindGameObjectsWithTag("Player");
-            player = playerarr[0].transform;
-        }
         currentHealth = maxHealth;
-        //healthBar.SetCurrent(currentHealth);
-        //healthBar.SetMax(maxHealth);
     }
+    
     // Update is called once per frame
-    void Update()
+    public void TakeDamage(int damage)
     {
-        if (player == null)
-        {
-            return;
-        }
-
-        //animator to set direction here
         
-    }
-
-    void Flip()
-    {
-        Flip(false);
-    }
-    void Flip(bool overrideCd)
-    {
-        if (flipCd > 0 || !overrideCd) { return; }
-        flipCd = 2f;
-        facingRight = !facingRight;
-
-        Vector3 scale = transform.localScale;
-        scale.x *= -1;
-        transform.localScale = scale;
-    }
-
-    public void Stun(float stunLength)
-    {
-        stunTime = stunLength;
-    }
-    // Update is called once per frame
-    public void TakeDamage(int damage, bool wind = false, bool water = false)
-    {
-        aggroTime = m_aggroSecs_outOfRange;
         Debug.Log("took damage", gameObject);
         currentHealth -= damage;
         //healthBar.SetCurrent(currentHealth, transform.localScale.x < 0);
         //healthBar.ToggleActive(true);
-        Vector2 difference = transform.position - player.position;
-        difference = difference.normalized * thrust;
-        Stun(0.3f);
+        //Vector2 difference = new Vector2(transform.position.x - player.position.x, 0);
+        //difference = difference.normalized * thrust;
+        //rb.AddForce(difference);
+        GetComponent<EnemyMovement>().Stun(0.3f);
 
         if (currentHealth <= 0)
         {
@@ -96,73 +38,7 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    public void FixedUpdate()
-    {
-        stunTime -= Time.deltaTime;
-        flipCd -= Time.deltaTime;
-        aggroTime -= Time.deltaTime;
-        if (Vector2.SqrMagnitude(player.transform.position - transform.position) < aggroRange)
-        {
-            Debug.Log(Vector2.SqrMagnitude(player.transform.position - transform.position));
-            aggroTime = m_aggroSecs_outOfRange;
-        }
-        if (stunTime < 0)
-        {
-            if (aggroTime > 0)
-            {
-                if (Mathf.Sign(player.transform.position.x - transform.position.x) * (facingRight ? 1 : -1) < 0)
-                {
-                    Flip(true);
-                }
-                MoveCharacter(Mathf.Sign(player.transform.position.x - transform.position.x));
-            }
-            else
-            {
-                Patrol();
-            }
-        }
-
-        if (rb.velocity.x * (facingRight ? 1 : -1) < 0)
-        {
-            Debug.Log("unflipped: " + rb.velocity.x + " " + facingRight);
-            Flip(true);
-            Debug.Log("flipped: " + rb.velocity.x + " " + facingRight);
-        }
-    }
-
-    public void Patrol()
-    {
-        if (!checkForGroundAhead())
-        {
-            Flip();
-        }
-        MoveCharacter(facingRight ? 1 : -1);
-    }
-
-    public void MoveCharacter(float xDir)
-    {
-        if (checkForGroundAhead())
-        {
-            rb.velocity = new Vector2(xDir * moveSpeed, rb.velocity.y);
-        } else
-        {
-            rb.velocity = new Vector2(0, rb.velocity.y);
-        }
-    }
-
-    public bool checkForGroundAhead()
-    {
-        bool grounded = false;
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(m_GroundCheck.position, k_GroundedRadius, m_WhatIsGround);
-        for (int i = 0; i < colliders.Length; i++)
-        {
-            if (colliders[i].gameObject != gameObject)
-            {
-                grounded = true;
-            }
-        }
-        return grounded;
-    }
+    
     void Die()
     {
         Debug.Log("You killed an enemy");

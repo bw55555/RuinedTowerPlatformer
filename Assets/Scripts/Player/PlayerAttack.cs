@@ -8,6 +8,12 @@ public class PlayerAttack : MonoBehaviour
     public float attackRange = 1f;
     public LayerMask enemyLayers;
     public Animator animator;
+    private PlayerInfo playerInfo;
+
+    private void Awake()
+    {
+        playerInfo = GetComponent<PlayerInfo>();
+    }
 
     // Update is called once per frame
     void Update()
@@ -23,15 +29,37 @@ public class PlayerAttack : MonoBehaviour
         }
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Enemy enemy = collision.gameObject.GetComponent<Enemy>();
+        if (enemy != null)
+        {
+            playerInfo.takeDamage(enemy.attack);
+        }
+    }
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        Enemy enemy = collision.gameObject.GetComponent<Enemy>();
+        if (enemy != null)
+        {
+            playerInfo.takeDamage(enemy.attack);
+        }
+    }
+
     void Attack()
     {
         animator.SetTrigger("Attack");
 
         Collider2D[] hit = Physics2D.OverlapCircleAll(hitbox.position, attackRange, enemyLayers);
 
-        foreach (Collider2D enemy in hit)
+        foreach (Collider2D coll in hit)
         {
-
+            Enemy enemy = coll.gameObject.GetComponent<Enemy>();
+            if (enemy != null)
+            {
+                enemy.TakeDamage(playerInfo.Attack);
+            }
         }
     }
 
