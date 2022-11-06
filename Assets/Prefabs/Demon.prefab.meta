@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Prefabs/health bar.prefab.meta
+guid: 1c0cfb8187fa37e4996d92996dbccac1
+========
 guid: 29c86aacb30f55f4c8e7b136ed6957cc
+>>>>>>>> 726f3616110b23502677b0d4e14f37935b1e73db:Assets/Prefabs/Demon.prefab.meta
 PrefabImporter:
   externalObjects: {}
   userData: 
