@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 7020283686449906747}
   - component: {fileID: 7020283686449906746}
   m_Layer: 8
-  m_Name: Skeleton 1
+  m_Name: SkeletonEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -228,7 +228,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8041651850742044653}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.22, y: -1.36, z: 0}
+  m_LocalPosition: {x: 0.4, y: -1.09, z: 0}
   m_LocalScale: {x: 0.55619, y: 0.55619, z: 0.55619}
   m_Children: []
   m_Father: {fileID: 7020283686449906754}
