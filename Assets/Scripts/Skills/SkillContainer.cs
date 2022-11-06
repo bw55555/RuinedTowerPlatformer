@@ -14,7 +14,7 @@ public class SkillContainer : MonoBehaviour
 {
     // Start is called before the first frame update
 
-    public int numSkills = 3;
+    public int numSkills = 10;
     private Skill[] skills;
     public static SkillContainer Instance;
 
