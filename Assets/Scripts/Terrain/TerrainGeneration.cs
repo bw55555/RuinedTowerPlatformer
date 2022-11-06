@@ -139,7 +139,6 @@ public class TerrainGeneration : MonoBehaviour
         while (currLine < bottom)
         {
             List<Vector2Int> eligibleLocations = findByPattern(currLine, 0, currLine + 10, width, pattern);
-            Debug.Log("Count:" + eligibleLocations.Count);
             if (eligibleLocations.Count > 0)
             {
                 Vector2Int randomLoc = eligibleLocations[Random.Range(0, eligibleLocations.Count)];

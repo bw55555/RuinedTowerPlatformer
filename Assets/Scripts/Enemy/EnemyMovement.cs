@@ -64,7 +64,7 @@ public class EnemyMovement : MonoBehaviour
     }
     void Flip(bool overrideCd)
     {
-        if (flipCd > 0 || !overrideCd) { return; }
+        if (flipCd > 0 && !overrideCd) { return; }
         flipCd = 2f;
         facingRight = !facingRight;
 
@@ -80,7 +80,6 @@ public class EnemyMovement : MonoBehaviour
         aggroTime -= Time.deltaTime;
         if (Vector2.SqrMagnitude(player.transform.position - transform.position) < aggroRange)
         {
-            Debug.Log(Vector2.SqrMagnitude(player.transform.position - transform.position));
             aggroTime = m_aggroSecs_outOfRange;
         }
         if (stunTime < 0)
