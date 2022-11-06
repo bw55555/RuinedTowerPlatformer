@@ -12,6 +12,8 @@ public class FallDamage : MonoBehaviour
         playerInfo = GetComponent<PlayerInfo>();
     }
    
+
+   
     void Start() => rb2D = GetComponent<Rigidbody2D>();
     private float GetVerticalSpeed() => rb2D.velocity.y;
 
