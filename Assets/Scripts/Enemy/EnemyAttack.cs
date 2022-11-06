@@ -39,8 +39,10 @@ public class EnemyAttack : MonoBehaviour
     private void FixedUpdate()
     {
         attackCd -= Time.deltaTime;
-        if (attackCd > 0 && shouldAttack())
+        Debug.Log(shouldAttack());
+        if (attackCd <= 0 && shouldAttack())
         {
+            attackCd = minTimeBetweenAttacks;
             anim.SetTrigger("Attack");
         }
     }
