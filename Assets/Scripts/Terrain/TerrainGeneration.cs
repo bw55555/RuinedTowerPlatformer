@@ -102,6 +102,45 @@ public class TerrainGeneration : MonoBehaviour
             grid[i][width - 1] = new Wall(new Vector2Int(i, width - 1));
         }
     }
+
+    void generateTorches(int top, int bottom)
+    {
+        TerrainType[] block1 = { TerrainType.Empty };
+        TerrainType[][] pattern = { block1 };
+        int torch_chance = 5;
+        for (int x = top; x < bottom; x++)
+        {
+            for (int y = 0; y < width; y++)
+            {
+                if (grid[x][y].getType() == TerrainType.Empty && canPlaceTorch(x, y))
+                {
+                    if (Random.Range(1, torch_chance) == 1)
+                    {
+                        grid[x][y] = new Torch(new Vector2Int(x, y));
+                    }
+                }
+            }
+        }
+    }
+
+    bool canPlaceTorch(int x, int y)
+    {
+        int torch_spacing = 4;
+        for (int i = x - torch_spacing; i <= x + torch_spacing; i++)
+        {
+            for (int j = y - torch_spacing; j <= y + torch_spacing; j++)
+            {
+                if (i < 0 || i >= grid.Count || j < 0 || j >= width) { continue; }
+                    
+                if(grid[i][j].getType() == TerrainType.Torch)
+                {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
     /*
     void generateWallCracks(int top, int bottom)
     {
@@ -134,9 +173,13 @@ public class TerrainGeneration : MonoBehaviour
         generateVines(top, bottom);
 
         
+
+
         generateWalls(0, grid.Count);
 
         generateDoors(top, bottom);
+
+        generateTorches(top, bottom);
 
         generateSectionEnd();
     }
