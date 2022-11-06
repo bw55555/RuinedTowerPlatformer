@@ -394,8 +394,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
-  - {fileID: 1639833746}
   - {fileID: 1279877257}
+  - {fileID: 1639833746}
   - {fileID: 1454397801}
   m_Father: {fileID: 0}
   m_RootOrder: 1
@@ -3424,7 +3424,7 @@ RectTransform:
   m_Children:
   - {fileID: 1294818843}
   m_Father: {fileID: 432852611}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3768,6 +3768,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Fade
+      objectReference: {fileID: 0}
+    - target: {fileID: 7249733707375682597, guid: 2bf0679f0572deb43ace264dcc85cb2b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7249733707375682598, guid: 2bf0679f0572deb43ace264dcc85cb2b,
         type: 3}
@@ -4789,6 +4794,11 @@ PrefabInstance:
       propertyPath: type
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7195612682454374412, guid: 2117f1b4c13810649a7140c362ffc144,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2117f1b4c13810649a7140c362ffc144, type: 3}
 --- !u!1001 &2547178288578767615
@@ -5071,6 +5081,11 @@ PrefabInstance:
       value: mc
       objectReference: {fileID: 0}
     - target: {fileID: 8682037056563476849, guid: 374a403ae658b84478bb097cd6bc0de3,
+        type: 3}
+      propertyPath: menu
+      value: 
+      objectReference: {fileID: 1279877256}
+    - target: {fileID: 8842020311618723788, guid: 374a403ae658b84478bb097cd6bc0de3,
         type: 3}
       propertyPath: menu
       value: 
