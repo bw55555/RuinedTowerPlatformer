@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class PickSkills : MonoBehaviour
 {
-    SkillContainer current;
     public Image first;
     public Image second;
     public Image third;
@@ -25,11 +24,11 @@ public class PickSkills : MonoBehaviour
         int selection;
         while(count < 3)
         {
-            selection = Random.Range(1, 9);
+            selection = Random.Range(0, 8);
             Debug.Log(selection);
-            Debug.Log(current.getSkill((SkillType)selection).Active);
+            Debug.Log(SkillContainer.Instance.getSkill((SkillType)selection).Active);
 
-            if (!current.getSkill((SkillType)selection).Active)
+            if (!SkillContainer.Instance.getSkill((SkillType)selection).Active)
             {
                 if (count == 0)
                 {
