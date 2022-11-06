@@ -8,19 +8,17 @@ public class Enemy : MonoBehaviour
 {
     public int maxHealth = 100;
     private Rigidbody2D rb;
-    public int currentHealth;
-    public float thrust;
+    private int currentHealth;
+    public float thrust = 3;
     private Vector2 movement;
     
     public bool facingRight = true;
     private Transform player;
     public float moveSpeed = 1f;
     private float aggroTime = 0f;
-    public int enemyType;
-    public int minDistanceToPlayer;
-
+    //public int enemyType;
     public float m_aggroSecs_outOfRange = 5;
-    public float aggroRange = 5f;
+    public float aggroRange = 20f;
 
     private float flipCd = 0f;
 
@@ -28,6 +26,12 @@ public class Enemy : MonoBehaviour
     // Start is called before the first frame update
 
     private Animator anim;
+
+    [SerializeField] private LayerMask m_WhatIsGround;                          // A mask determining what is ground to the character
+    [SerializeField] private Transform m_GroundCheck;                           // A position marking where to check if the player is grounded.
+    const float k_GroundedRadius = .06f; // Radius of the overlap circle to determine if grounded
+
+    public int CurrentHealth { get => currentHealth; set => currentHealth = value; }
 
     void Awake()
     {
@@ -52,10 +56,16 @@ public class Enemy : MonoBehaviour
         }
 
         //animator to set direction here
+        
     }
+
     void Flip()
     {
-        if (flipCd > 0) { return; }
+        Flip(false);
+    }
+    void Flip(bool overrideCd)
+    {
+        if (flipCd > 0 || !overrideCd) { return; }
         flipCd = 2f;
         facingRight = !facingRight;
 
@@ -91,17 +101,32 @@ public class Enemy : MonoBehaviour
         stunTime -= Time.deltaTime;
         flipCd -= Time.deltaTime;
         aggroTime -= Time.deltaTime;
-        if (Vector2.Distance(player.transform.position, transform.position) < aggroRange)
+        if (Vector2.SqrMagnitude(player.transform.position - transform.position) < aggroRange)
         {
+            Debug.Log(Vector2.SqrMagnitude(player.transform.position - transform.position));
             aggroTime = m_aggroSecs_outOfRange;
         }
-        if (stunTime < 0) { MoveCharacter(movement); }
-        if (aggroTime > 0)
+        if (stunTime < 0)
         {
-            MoveCharacter(new Vector2(player.transform.position.x - transform.position.x, 0).normalized);
-        } else
+            if (aggroTime > 0)
+            {
+                if (Mathf.Sign(player.transform.position.x - transform.position.x) * (facingRight ? 1 : -1) < 0)
+                {
+                    Flip(true);
+                }
+                MoveCharacter(Mathf.Sign(player.transform.position.x - transform.position.x));
+            }
+            else
+            {
+                Patrol();
+            }
+        }
+
+        if (rb.velocity.x * (facingRight ? 1 : -1) < 0)
         {
-            Patrol();
+            Debug.Log("unflipped: " + rb.velocity.x + " " + facingRight);
+            Flip(true);
+            Debug.Log("flipped: " + rb.velocity.x + " " + facingRight);
         }
     }
 
@@ -111,20 +136,32 @@ public class Enemy : MonoBehaviour
         {
             Flip();
         }
-        MoveCharacter(new Vector2(facingRight ? 1 : 0, 0));
+        MoveCharacter(facingRight ? 1 : -1);
     }
 
-    public void MoveCharacter(Vector2 direction)
+    public void MoveCharacter(float xDir)
     {
         if (checkForGroundAhead())
         {
-            rb.velocity = direction * moveSpeed;
+            rb.velocity = new Vector2(xDir * moveSpeed, rb.velocity.y);
+        } else
+        {
+            rb.velocity = new Vector2(0, rb.velocity.y);
         }
     }
 
     public bool checkForGroundAhead()
     {
-        return true;
+        bool grounded = false;
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(m_GroundCheck.position, k_GroundedRadius, m_WhatIsGround);
+        for (int i = 0; i < colliders.Length; i++)
+        {
+            if (colliders[i].gameObject != gameObject)
+            {
+                grounded = true;
+            }
+        }
+        return grounded;
     }
     void Die()
     {
