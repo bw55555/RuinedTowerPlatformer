@@ -5,7 +5,7 @@ using UnityEngine;
 public class Platform : TerrainObject
 {
 
-    public Platform(Vector2 gridPos)
+    public Platform(Vector2Int gridPos)
     {
         this.gridPos = gridPos;
     }

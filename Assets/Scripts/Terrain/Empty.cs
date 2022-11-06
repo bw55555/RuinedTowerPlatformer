@@ -5,9 +5,8 @@ using UnityEngine;
 public class Empty : TerrainObject
 {
 
-    public Empty(Vector2 gridPos)
+    public Empty()
     {
-        this.gridPos = gridPos;
     }
 
     override
