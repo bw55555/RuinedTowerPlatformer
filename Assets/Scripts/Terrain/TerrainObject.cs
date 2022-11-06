@@ -7,6 +7,7 @@ public enum TerrainType
     Platform,
     Vine,
     Door,
+    Wall,
     Air,
     Empty, 
     Any
@@ -20,6 +21,11 @@ abstract public class TerrainObject
     public void setPos(Vector2Int gridPos)
     {
         this.gridPos = gridPos;
+    }
+
+    public Vector2Int getPos()
+    {
+        return gridPos;
     }
 
     public void setOverwritable(bool overwritable)

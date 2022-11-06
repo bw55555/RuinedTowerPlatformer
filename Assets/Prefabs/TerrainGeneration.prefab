@@ -299,8 +299,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9656eb66dc1fd0c45a521fddbfb28ffa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  width: 100
-  height: 1000
+  width: 56
+  height: 100
   platform_spacing: 1.6
   platform_minSize: 3
   platform_maxSize: 8
@@ -356,6 +356,7 @@ MonoBehaviour:
   platform: {fileID: 11400000, guid: 11070530fbbabea4b9e28fb3e4cb43ea, type: 2}
   vine: {fileID: 11400000, guid: 2cd8c50c9428c9f4caeb2bca0177c8d0, type: 2}
   door: {fileID: 11400000, guid: 2a9fbbdc3eaa99a4bbe4712c04b271df, type: 2}
+  wall: {fileID: 11400000, guid: cb74e410a9b8961498cbe88cccf630c5, type: 2}
   platformTileMap: {fileID: 2577608042568152007}
   vineTileMap: {fileID: 2577608043517506152}
   doorTileMap: {fileID: 2577608043517506152}

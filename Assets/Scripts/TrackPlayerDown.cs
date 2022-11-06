@@ -18,7 +18,7 @@ public class TrackPlayerDown : MonoBehaviour
     {
         trackedValue = Mathf.Min(player.transform.position.y, trackedValue);
 
-        gameObject.transform.position = new Vector3(gameObject.transform.position.x, 
-            Mathf.Min(player.transform.position.y, trackedValue + m_scrollUp), gameObject.transform.position.z);
+        transform.position = new Vector3(player.transform.position.x, 
+            Mathf.Min(player.transform.position.y, trackedValue + m_scrollUp), player.transform.position.z);
     }
 }

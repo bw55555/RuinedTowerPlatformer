@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TerrainGeneration : MonoBehaviour
 {
-    public int width;
+    public int width = 56;
     public int height;
 
     
@@ -24,7 +24,9 @@ public class TerrainGeneration : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        generate(0, height);
+        generateSectionStart();
+        generate(10, height);
+        
         instantiate();
     }
 
@@ -33,6 +35,81 @@ public class TerrainGeneration : MonoBehaviour
     {
         
     }
+
+    void generateSectionStart()
+    {
+        for (int i = 0; i < 5; i++)
+        {
+            grid.Add(new List<TerrainObject>());
+            for (int j = 0; j < width; j++)
+            {
+                grid[i].Add(new Empty());
+            }
+
+        }
+        int middle = width / 2;
+        for (int i = 0;i < 4;i++)
+        {
+            grid[0][middle - 2 + i] = new Platform(new Vector2Int(0, middle - 2 + i));
+        }
+        for (int i = 0; i < 5; i++)
+        {
+            grid[3][middle - 2 - i] = new Platform(new Vector2Int(3, middle - 2 - i));
+        }
+        for (int i = 0; i < 5; i++)
+        {
+            grid[3][middle + 1 + i] = new Platform(new Vector2Int(3, middle + 1 + i));
+        }
+    }
+
+    void generateSectionEnd()
+    {
+        int currHeight = grid.Count;
+        for (int i = 0;i<5;i++)
+        {
+            grid.Add(new List<TerrainObject>());
+            for (int j = 0; j < width; j++)
+            {
+                grid[grid.Count - 1].Add(new Empty());
+            }
+
+        }
+
+        grid.Add(new List<TerrainObject>());
+        for (int j = 0; j < width; j++)
+        {
+            grid[grid.Count - 1].Add(new Wall(new Vector2Int(grid.Count - 1, j)));
+        }
+
+        
+    }
+
+    void generateWalls(int top, int bottom)
+    {
+        bottom = Mathf.Min(bottom, grid.Count - 1);
+        for (int i = top;i<bottom;i++)
+        {
+            grid[i][0] = new Wall(new Vector2Int(i, 0));
+            grid[i][1] = new Wall(new Vector2Int(i, 1));
+            grid[i][2] = new Wall(new Vector2Int(i, 2));
+            grid[i][width - 3] = new Wall(new Vector2Int(i, width - 3));
+            grid[i][width - 2] = new Wall(new Vector2Int(i, width - 2));
+            grid[i][width - 1] = new Wall(new Vector2Int(i, width - 1));
+        }
+    }
+    /*
+    void generateWallCracks(int top, int bottom)
+    {
+        float currLine = top;
+        float randomIncr;
+        while (currLine < bottom)
+        {
+            createPlatformOnLine((int)currLine);
+            randomIncr = Random.Range(0.0f, platform_spacing);
+            currLine += randomIncr;
+        }
+    }
+    */
 
     void generate(int top, int bottom)
     {
@@ -50,6 +127,9 @@ public class TerrainGeneration : MonoBehaviour
         generatePlatforms(top, bottom);
 
         generateVines(top, bottom);
+
+        //generateSectionEnd();
+        generateWalls(0, grid.Count);
 
         generateDoors(top, bottom);
     }

@@ -9,6 +9,7 @@ public class TerrainAssets : MonoBehaviour
     public TileBase platform;
     public TileBase vine;
     public TileBase door;
+    public TileBase wall;
     public static TerrainAssets Instance;
 
     private void Awake()
@@ -25,6 +26,7 @@ public class TerrainAssets : MonoBehaviour
         switch (type)
         {
             case TerrainType.Platform: platformTileMap.SetTile(new Vector3Int(xpos, ypos, 0), platform); return;
+            case TerrainType.Wall: platformTileMap.SetTile(new Vector3Int(xpos, ypos, 0), wall); return;
             case TerrainType.Vine: vineTileMap.SetTile(new Vector3Int(xpos, ypos, 0), vine); return;
             case TerrainType.Door: doorTileMap.SetTile(new Vector3Int(xpos, ypos, 0), door); return;
         }
