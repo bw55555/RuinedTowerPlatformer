@@ -8,6 +8,7 @@ public class TrackPlayerDown : MonoBehaviour
     public float m_scrollUp = 5;
     public GameObject player;
     private float trackedValue;
+    public int bottomClamp = 10;
     void Start()
     {
         
@@ -16,9 +17,9 @@ public class TrackPlayerDown : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        trackedValue = Mathf.Min(player.transform.position.y, trackedValue);
+        trackedValue = Mathf.Clamp(player.transform.position.y, - 1 * MainController.Instance.endHeight() + bottomClamp, trackedValue);
 
         transform.position = new Vector3(player.transform.position.x, 
-            Mathf.Min(player.transform.position.y, trackedValue + m_scrollUp), player.transform.position.z);
+            Mathf.Clamp(player.transform.position.y, -1 * MainController.Instance.endHeight() + bottomClamp, trackedValue + m_scrollUp), player.transform.position.z);
     }
 }

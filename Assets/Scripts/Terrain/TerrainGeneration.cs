@@ -19,29 +19,28 @@ public class TerrainGeneration : MonoBehaviour
 
     private List<List<TerrainObject>> grid = new List<List<TerrainObject>>();
 
+    public int getGridHeight()
+    {
+        return grid.Count;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        createTerrain();
+        //createTerrain();
     }
 
-    void createTerrain()
+    public void createTerrain()
     {
         generateSectionStart();
-        generate(7, height);
+        generate(11, height);
 
         instantiate();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     void generateSectionStart()
     {
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < 10; i++)
         {
             grid.Add(new List<TerrainObject>());
             for (int j = 0; j < width; j++)
@@ -53,22 +52,22 @@ public class TerrainGeneration : MonoBehaviour
         int middle = width / 2;
         for (int i = 0;i < 4;i++)
         {
-            grid[0][middle - 2 + i] = new Platform(new Vector2Int(0, middle - 2 + i));
+            grid[5][middle - 2 + i] = new Platform(new Vector2Int(5, middle - 2 + i));
         }
         for (int i = 0; i < 5; i++)
         {
-            grid[3][middle - 2 - i] = new Platform(new Vector2Int(3, middle - 2 - i));
+            grid[8][middle - 2 - i] = new Platform(new Vector2Int(8, middle - 2 - i));
         }
         for (int i = 0; i < 5; i++)
         {
-            grid[3][middle + 1 + i] = new Platform(new Vector2Int(3, middle + 1 + i));
+            grid[8][middle + 1 + i] = new Platform(new Vector2Int(8, middle + 1 + i));
         }
     }
 
     void generateSectionEnd()
     {
         int currHeight = grid.Count;
-        for (int i = 0;i<3;i++)
+        for (int i = 0;i<5;i++)
         {
             grid.Add(new List<TerrainObject>());
             for (int j = 0; j < width; j++)
@@ -78,12 +77,14 @@ public class TerrainGeneration : MonoBehaviour
 
         }
 
-        grid.Add(new List<TerrainObject>());
-        for (int j = 0; j < width; j++)
+        for (int i = 0; i < 5; i++)
         {
-            grid[grid.Count - 1].Add(new Wall(new Vector2Int(grid.Count - 1, j)));
+            grid.Add(new List<TerrainObject>());
+            for (int j = 0; j < width; j++)
+            {
+                grid[grid.Count - 1].Add(new Wall(new Vector2Int(grid.Count - 1, j)));
+            }
         }
-
 
         generateWalls(currHeight, grid.Count);
     }
@@ -209,7 +210,7 @@ public class TerrainGeneration : MonoBehaviour
 
     void createVineOnLine(int line)
     {
-        if (line < vine_maxSize + 1) { return; }
+        if (line < 10 + vine_maxSize + 1) { return; }
         int col = Random.Range(0, width);
         int vineSize = Random.Range(vine_minSize, vine_maxSize);
         for (int i = line - vineSize + 1; i <= line; i++)
