@@ -41,6 +41,6 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Items
+  - name: Mobs
     uniqueID: 3374768775
     locked: 0
