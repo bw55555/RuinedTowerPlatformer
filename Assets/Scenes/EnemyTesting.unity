@@ -343,6 +343,64 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a7258baf43b5384cac7b66605d5bf3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &153037648
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 153037650}
+  - component: {fileID: 153037649}
+  m_Layer: 0
+  m_Name: SoundController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &153037649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 153037648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1480bf68b3fb96408913ad3a119bb10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player_attack: {fileID: 8300000, guid: 5a5330a745c0ac24e9cbf319e6470b3a, type: 3}
+  player_death: {fileID: 8300000, guid: 51122aac1290837439ce10830212a5f8, type: 3}
+  player_hit: {fileID: 8300000, guid: c11214207288d504f92f157a67c055af, type: 3}
+  player_jump: {fileID: 8300000, guid: 98ebabefd62d5344c87ad489ea3c5434, type: 3}
+  demon_attack: {fileID: 8300000, guid: 35e6da6d0d018364d8b63f84b43c5661, type: 3}
+  flyingknight_attack: {fileID: 8300000, guid: a5346cef21a1b4c4f93cec608f34a41e, type: 3}
+  skeleton_attack: {fileID: 8300000, guid: cbb4ca3b3426fcf4ebc74a3c64d3273c, type: 3}
+  dash: {fileID: 8300000, guid: e9e432db034cd2a4eb4fb0dfeb4aa94f, type: 3}
+  extra_damage: {fileID: 8300000, guid: ae2343d6f1f374142910fbd7175f2ad8, type: 3}
+  health_potion: {fileID: 8300000, guid: 7a306eda37c1339429bd159a28e6577b, type: 3}
+  invincibility: {fileID: 8300000, guid: 47036803b6ed043409672b52a31045a4, type: 3}
+  second_jump: {fileID: 8300000, guid: 487d8541e31d1c5498f6dee6bd26e284, type: 3}
+  slime_attack: {fileID: 8300000, guid: 02c5fbe15684c664abbb1c76effc3de1, type: 3}
+  Slime_jump: {fileID: 8300000, guid: 887e964ea18a5da4ebc5ae9958c25e10, type: 3}
+  enemy_death: {fileID: 8300000, guid: e044a4a238fe64648b0fec242711283d, type: 3}
+--- !u!4 &153037650
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 153037648}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &247916651
 GameObject:
   m_ObjectHideFlags: 0
@@ -1483,7 +1541,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1641118443}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e16bbfdc336691e42858ad24a3d62c5e, type: 3}
   m_Name: 
