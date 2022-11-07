@@ -34,8 +34,8 @@ public class SkillContainer : MonoBehaviour
         
         addSkill(SkillType.Dash, 2f);
         addSkill(SkillType.FeatherFall, 20f);
-        addSkill(SkillType.Thornmail, 0f);
-        addSkill(SkillType.Invincibility, 100f, 0);
+        addSkill(SkillType.Thornmail, 0.4f);
+        addSkill(SkillType.Invincibility, 100f, 1);
         addSkill(SkillType.Extra_Damage, 0f);
         addSkill(SkillType.Key, 0f, 0);
         addSkill(SkillType.Health_Potion, 60f, 0);
@@ -43,6 +43,9 @@ public class SkillContainer : MonoBehaviour
         getSkill(SkillType.Attack).Active = true;
         getSkill(SkillType.DoubleJump).Active = true;
         getSkill(SkillType.Dash).Active = true;
+        getSkill(SkillType.Thornmail).Active = true;
+        getSkill(SkillType.Extra_Damage).Active = true;
+        getSkill(SkillType.Invincibility).Active = true;
     }
 
     void Start()

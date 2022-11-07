@@ -34,11 +34,9 @@ public class PlayerAttack : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         Enemy enemy = collision.collider.gameObject.GetComponent<Enemy>();
-        Debug.Log("Collision Detected", collision.otherCollider);
         if (enemy != null)
         {
-            Debug.Log("something is happening");
-            playerInfo.takeDamage(enemy.Attack);
+            enemyAttack(enemy);
         }
     }
 
@@ -47,7 +45,17 @@ public class PlayerAttack : MonoBehaviour
         Enemy enemy = collision.collider.gameObject.GetComponent<Enemy>();
         if (enemy != null)
         {
-            playerInfo.takeDamage(enemy.Attack);
+            enemyAttack(enemy);
+        }
+    }
+
+    void enemyAttack(Enemy enemy)
+    {
+        bool tookDamage = playerInfo.takeDamage(enemy.Attack);
+        if (tookDamage && SkillContainer.Instance.isSkillReady(SkillType.Thornmail))
+        {
+            SkillContainer.Instance.useSkill(SkillType.Thornmail);
+            enemy.TakeDamage(enemy.Attack / 2);
         }
     }
 
@@ -63,7 +71,12 @@ public class PlayerAttack : MonoBehaviour
             Enemy enemy = coll.gameObject.GetComponent<Enemy>();
             if (enemy != null)
             {
-                enemy.TakeDamage(playerInfo.Attack);
+                float critMultiplier = 1;
+                if (SkillContainer.Instance.isSkillReady(SkillType.Extra_Damage) && Random.Range(0, 5) == 0)
+                {
+                    critMultiplier = 1.5f;
+                }
+                enemy.TakeDamage(playerInfo.Attack * critMultiplier);
             }
         }
     }

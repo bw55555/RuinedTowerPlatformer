@@ -6,23 +6,23 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    public int base_health = 100;
-    public int health_scaling = 10;
-    public int base_attack = 10;
-    public int attack_scaling = 2;
+    public float base_health = 100;
+    public float health_scaling = 10;
+    public float base_attack = 10;
+    public float attack_scaling = 2;
     public int level = 1;
 
-    private int maxHealth;
+    private float maxHealth;
 
-    private int attack;
+    private float attack;
 
-    private int currentHealth;
+    private float currentHealth;
 
     private float flashTime = 0f;
 
     private float maxFlashTime = 0.3f;
-    public int CurrentHealth { get => currentHealth; set => currentHealth = value; }
-    public int Attack { get => attack; set => attack = value; }
+    public float CurrentHealth { get => currentHealth; set => currentHealth = value; }
+    public float Attack { get => attack; set => attack = value; }
 
     private void Awake()
     {
@@ -39,10 +39,8 @@ public class Enemy : MonoBehaviour
         maxHealth = base_health + health_scaling * (level - 1);
         currentHealth = maxHealth;
     }
-    public void TakeDamage(int damage)
+    public void TakeDamage(float damage)
     {
-        
-        Debug.Log("took damage", gameObject);
         currentHealth -= damage;
         flashTime = maxFlashTime;
         GetComponent<EnemyMovement>().Stun(0.3f);
