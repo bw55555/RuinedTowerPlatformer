@@ -313,6 +313,7 @@ MonoBehaviour:
   torch_spacing: 7
   enemy_density: 5
   enemy_spacing: 3
+  flying_enemy_density: 15
 --- !u!1 &2577608043282301477
 GameObject:
   m_ObjectHideFlags: 0
@@ -365,7 +366,7 @@ MonoBehaviour:
     type: 3}
   slime: {fileID: 2184678531303752231, guid: 8daa20765ba7cbf45b04d72f652ea96a, type: 3}
   knight: {fileID: 0}
-  demon: {fileID: 0}
+  demon: {fileID: 2547178286793422891, guid: 1c0cfb8187fa37e4996d92996dbccac1, type: 3}
   platformTileMap: {fileID: 2577608042568152007}
   vineTileMap: {fileID: 2577608043517506152}
 --- !u!1 &2577608043517506155

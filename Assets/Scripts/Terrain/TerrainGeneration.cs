@@ -19,6 +19,7 @@ public class TerrainGeneration : MonoBehaviour
     public int torch_spacing = 7;
     public int enemy_density = 5;
     public int enemy_spacing = 3;
+    public int flying_enemy_density = 15;
 
     private List<List<TerrainObject>> grid = new List<List<TerrainObject>>();
 
@@ -154,6 +155,36 @@ public class TerrainGeneration : MonoBehaviour
 
     }
 
+    void generateFlyingEnemies(int top, int bottom)
+    {
+        TerrainType[] block1 = { TerrainType.Any, TerrainType.Empty, TerrainType.Empty, TerrainType.Any };
+        TerrainType[] block2 = { TerrainType.Empty, TerrainType.Empty, TerrainType.Empty, TerrainType.Empty };
+        TerrainType[] block3 = { TerrainType.Empty, TerrainType.Empty, TerrainType.Empty, TerrainType.Empty };
+        TerrainType[] block4 = { TerrainType.Any, TerrainType.Empty, TerrainType.Empty, TerrainType.Any };
+        TerrainType[][] pattern = new TerrainType[][] {
+            block1, block2, block3
+        };
+        int currLine = top;
+        while (currLine < bottom)
+        {
+            List<Vector2Int> eligibleLocations = findByPattern(currLine, 0, currLine + 10, width, pattern);
+            if (eligibleLocations.Count > 0)
+            {
+                Vector2Int randomLoc = eligibleLocations[Random.Range(0, eligibleLocations.Count)];
+                if (isSpacedOut(randomLoc.x, randomLoc.y, enemy_spacing, TerrainType.EnemySpawnLoc))
+                {
+                    EnemyType enemyType = EnemyType.Demon;
+                    grid[randomLoc.x + 1][randomLoc.y + 1] = new EnemySpawnLoc(randomLoc + new Vector2Int(1, 1), enemyType);
+                    grid[randomLoc.x + 2][randomLoc.y + 1] = new Air(randomLoc + new Vector2Int(2, 1));
+                    grid[randomLoc.x + 1][randomLoc.y + 2] = new Air(randomLoc + new Vector2Int(1, 2));
+                    grid[randomLoc.x + 2][randomLoc.y + 2] = new Air(randomLoc + new Vector2Int(2, 2));
+                }
+            }
+
+            currLine += Random.Range(0, flying_enemy_density);
+        }
+    }
+
     bool isSpacedOut(int x, int y, int spacing, TerrainType t)
     {
         
@@ -187,11 +218,13 @@ public class TerrainGeneration : MonoBehaviour
 
         generatePlatforms(top, bottom);
 
-        generateVines(top, bottom);
+        //generateVines(top, bottom);
         
         generateWalls(0, grid.Count);
 
         generateMeleeEnemies(top, bottom);
+
+        generateFlyingEnemies(top, bottom);
 
         generateDoors(top, bottom);
 
@@ -223,6 +256,8 @@ public class TerrainGeneration : MonoBehaviour
             currLine += randomIncr;
         }
     }
+
+    
 
     void generateDoors(int top, int bottom)
     {

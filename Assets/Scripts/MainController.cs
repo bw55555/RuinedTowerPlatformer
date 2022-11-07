@@ -45,6 +45,7 @@ public class MainController : MonoBehaviour
         terrainGeneration.height = 50 + level * 50 + Mathf.Clamp(level -1, 0, 5) * 50;
         terrainGeneration.createTerrain();
         distanceBar.setMaxValue(endHeight());
+        player.position = new Vector3(terrainGeneration.width / 2, 0, 0);
     }
 
     // Update is called once per frame

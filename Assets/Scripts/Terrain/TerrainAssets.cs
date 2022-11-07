@@ -44,10 +44,10 @@ public class TerrainAssets : MonoBehaviour
     {
         switch (type)
         {
-            case EnemyType.Slime: Instantiate(slime, new Vector3(xpos, ypos, 0), Quaternion.identity); return;
-            case EnemyType.Skeleton: Instantiate(skeleton, new Vector3(xpos, ypos, 0), Quaternion.identity); return;
+            case EnemyType.Slime: Instantiate(slime, new Vector3(xpos + 0.5f, ypos + 0.5f, 0), Quaternion.identity); return;
+            case EnemyType.Skeleton: Instantiate(skeleton, new Vector3(xpos + 0.5f, ypos + 1.5f, 0), Quaternion.identity); return;
             case EnemyType.Knight: Instantiate(knight, new Vector3(xpos, ypos, 0), Quaternion.identity); return;
-            case EnemyType.Demon: Instantiate(demon, new Vector3(xpos, ypos, 0), Quaternion.identity); return;
+            case EnemyType.Demon: Instantiate(demon, new Vector3(xpos + 1f, ypos + 1f, 0), Quaternion.identity); return;
         }
     }
 }
