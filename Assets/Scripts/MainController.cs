@@ -9,6 +9,7 @@ public class MainController : MonoBehaviour
     public GameObject terrainGenerationPrefab;
     private TerrainGeneration terrainGeneration;
     public GameObject BigCamera;
+    public Transform lastPosition;
 
     public int level = 0;
     private float scaling;
