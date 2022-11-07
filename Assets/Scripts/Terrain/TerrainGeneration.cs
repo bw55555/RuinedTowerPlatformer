@@ -130,6 +130,9 @@ public class TerrainGeneration : MonoBehaviour
         int middle = width / 2;
         grid[grid.Count - 1][middle - 1] = new NextLevelDoor(new Vector2Int(grid.Count - 1, middle - 1));
 
+        grid[grid.Count - 3][middle + 8] = new ShopSpawnLoc(new Vector2Int(grid.Count - 3, middle + 8));
+        
+
         for (int i = 0; i < 5; i++)
         {
             grid.Add(new List<TerrainObject>());

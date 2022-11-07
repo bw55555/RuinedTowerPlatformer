@@ -11,6 +11,7 @@ public enum TerrainType
     Wall,
     Torch,
     EnemySpawnLoc,
+    ShopSpawnLoc,
     Air,
     Empty, 
     Any
