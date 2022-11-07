@@ -34,6 +34,10 @@ public class PlayerInfo : MonoBehaviour
         rb2D = GetComponent<Rigidbody2D>();
     }
 
+    public void setIframes(float iframes)
+    {
+        this.iframes = iframes;
+    }
     public void setCurrentHealth(float health)
     {
         currentHealth = health;

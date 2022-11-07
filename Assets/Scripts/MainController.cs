@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class MainController : MonoBehaviour
 {
@@ -20,6 +21,9 @@ public class MainController : MonoBehaviour
     public ProgressBar distanceBar;
 
     public UnityEvent toNextLevel;
+
+    public GameObject shop_shop;
+    public Image shop_prompt;
     public int Level { get => level; set => level = value; }
 
     private void Awake()
@@ -54,6 +58,8 @@ public class MainController : MonoBehaviour
         terrainGeneration.createTerrain();
         distanceBar.setMaxValue(endHeight());
         player.position = new Vector3(terrainGeneration.width / 2, 0, 0);
+        player.GetComponent<PlayerInfo>().setIframes(1f);
+        SoundManager.Instance.playSound(SoundManager.Instance.next_level);
         toNextLevel.Invoke();
     }
 

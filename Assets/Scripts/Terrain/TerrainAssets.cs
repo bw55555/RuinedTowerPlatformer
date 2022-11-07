@@ -14,6 +14,7 @@ public class TerrainAssets : MonoBehaviour
     public GameObject torch;
     public GameObject door;
     public GameObject nextLevelDoor;
+    public GameObject shop;
     public static TerrainAssets Instance;
 
     
@@ -35,6 +36,12 @@ public class TerrainAssets : MonoBehaviour
             case TerrainType.Torch: Instantiate(torch, new Vector3Int(xpos, ypos, 0), Quaternion.identity, parent.transform); return;
             case TerrainType.Door: Instantiate(door, new Vector3Int(xpos, ypos, 1), Quaternion.identity, parent.transform); return;
             case TerrainType.NextLevelDoor: Instantiate(nextLevelDoor, new Vector3Int(xpos, ypos, 1), Quaternion.identity, parent.transform); return;
+            case TerrainType.ShopSpawnLoc: 
+                OpenStore s = Instantiate(shop, new Vector3Int(xpos, ypos, 1), Quaternion.identity, parent.transform).GetComponent<OpenStore>();
+                s.shop = MainController.Instance.shop_shop;
+                s.prompt = MainController.Instance.shop_prompt;
+                MainController.Instance.shop_shop.GetComponent<PickSkills>().origin = s.gameObject;
+                return;
         }
 
     }
