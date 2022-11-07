@@ -43,7 +43,7 @@ public class Enemy : MonoBehaviour
     {
         currentHealth -= damage;
         flashTime = maxFlashTime;
-        GetComponent<EnemyMovement>().Stun(0.3f);
+        //GetComponent<EnemyMovement>().Stun(0.3f);
 
         if (currentHealth <= 0)
         {

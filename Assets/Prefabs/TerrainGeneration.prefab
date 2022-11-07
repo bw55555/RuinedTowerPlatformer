@@ -49,7 +49,7 @@ MonoBehaviour:
     type: 3}
   slime: {fileID: 2184678531303752231, guid: 8daa20765ba7cbf45b04d72f652ea96a, type: 3}
   knight: {fileID: 7228706820069221286, guid: 0d65e3cd9a85c864c9a8ae67e3f0574f, type: 3}
-  demon: {fileID: 327215389964425182, guid: 696709670619b3949afddf92c57bd17e, type: 3}
+  demon: {fileID: 5251658697921037384, guid: 6b59346282428b7468cced07c8e033fa, type: 3}
 --- !u!1 &2577608042568152013
 GameObject:
   m_ObjectHideFlags: 0
