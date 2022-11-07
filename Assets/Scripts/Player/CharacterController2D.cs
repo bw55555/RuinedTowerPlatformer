@@ -159,7 +159,8 @@ public class CharacterController2D : MonoBehaviour
 		{
 			if(m_Grounded)
             {
-				m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
+                SoundManager.Instance.playSound(SoundManager.Instance.player_jump);
+                m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
 			}
 			else if (!doubleJumped && SkillContainer.Instance.isSkillReady(SkillType.DoubleJump))
             {
@@ -174,7 +175,8 @@ public class CharacterController2D : MonoBehaviour
 					m_Rigidbody2D.velocity = new Vector2(m_Rigidbody2D.velocity.x, m_Rigidbody2D.velocity.y + 25.0f);
 				}
 				m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
-				doubleJumped = true;
+                SoundManager.Instance.playSound(SoundManager.Instance.player_jump);
+                doubleJumped = true;
 			}
 		}
 	}

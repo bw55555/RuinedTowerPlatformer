@@ -73,6 +73,7 @@ public class PlayerInfo : MonoBehaviour
     {
         if (iframes > 0) { return; }
         iframes = iframe_secs;
+        SoundManager.Instance.playSound(SoundManager.Instance.player_hit);
         currentHealth -= damage;
         healthBar.setValue(currentHealth);
     }

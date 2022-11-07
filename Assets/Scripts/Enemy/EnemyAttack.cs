@@ -42,6 +42,7 @@ public class EnemyAttack : MonoBehaviour
         if (attackCd <= 0 && shouldAttack())
         {
             attackCd = minTimeBetweenAttacks;
+            SoundManager.Instance.playSound(SoundManager.Instance.flyingknight_attack);
             anim.SetTrigger("Attack");
         }
     }

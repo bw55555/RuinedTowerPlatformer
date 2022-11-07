@@ -24,9 +24,7 @@ public class PlayerAttack : MonoBehaviour
             
             Skill s = SkillContainer.Instance.getSkill(SkillType.Attack);
             if (s.isReady())
-            {
-                
-               
+            {  
                 s.useSkill();
                 Attack();
             }
@@ -56,7 +54,6 @@ public class PlayerAttack : MonoBehaviour
     void Attack()
     {
         animator.SetTrigger("Attack");
-        Debug.Log(SoundManager.Instance.player_attack);
         SoundManager.Instance.playSound(SoundManager.Instance.player_attack);
 
         Collider2D[] hit = Physics2D.OverlapCircleAll(hitbox.position, attackRange, enemyLayers);
