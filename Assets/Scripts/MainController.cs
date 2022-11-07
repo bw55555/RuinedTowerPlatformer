@@ -68,4 +68,9 @@ public class MainController : MonoBehaviour
     {
         return terrainGeneration.getGridHeight();
     }
+
+    public bool isInSideRoom()
+    {
+        return player.position.x < -terrainGeneration.width / 2 - 5;
+    }
 }
