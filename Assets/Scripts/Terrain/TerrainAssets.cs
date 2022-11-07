@@ -40,6 +40,7 @@ public class TerrainAssets : MonoBehaviour
                 OpenStore s = Instantiate(shop, new Vector3Int(xpos, ypos, 1), Quaternion.identity, parent.transform).GetComponent<OpenStore>();
                 s.shop = MainController.Instance.shop_shop;
                 s.prompt = MainController.Instance.shop_prompt;
+                MainController.Instance.shop_shop.GetComponent<PickSkills>().origin = s.gameObject;
                 return;
         }
 
