@@ -51,7 +51,11 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    
+    public float xpOnDeath()
+    {
+        return level + 1;
+    }
+
     void Die()
     {
         Debug.Log("You killed an enemy");
@@ -62,6 +66,11 @@ public class Enemy : MonoBehaviour
         Instantiate(EnemyAssets.Instance.enemyDeath, transform.position, Quaternion.identity);
         Destroy(gameObject);
         
+    }
+
+    public bool isDead()
+    {
+        return currentHealth <= 0;
     }
 
     private void FixedUpdate()

@@ -9,7 +9,7 @@ public class PlayerInfo : MonoBehaviour
 
     private float maxHealth = 100;
     private float currentHealth = 100;
-    private int xp = 0;
+    private float xp = 0;
     private int level = 1;
     private int score = 0;
     private float iframes = 0;
@@ -19,7 +19,7 @@ public class PlayerInfo : MonoBehaviour
 
     public float MaxHealth { get => maxHealth; set => maxHealth = value; }
     public float CurrentHealth { get => currentHealth; set => currentHealth = value; }
-    public int Xp { get => xp; set => xp = value; }
+    public float Xp { get => xp; set => xp = value; }
     public int Level { get => level; set => level = value; }
     public int Score { get => score; set => score = value; }
     public int Attack { get => attack; set => attack = value; }
@@ -44,22 +44,26 @@ public class PlayerInfo : MonoBehaviour
         score = 0;
     }
 
-    public void addxp(int xp)
+    public void addxp(float xp)
     {
+        
         this.xp += xp;
-        while (this.xp < levelUpCost())
+        Debug.Log(this.xp + " " + levelUpCost());
+        while (this.xp >= levelUpCost())
         {
             levelUp();
+
         }
     }
 
-    int levelUpCost()
+    float levelUpCost()
     {
-        return 100 * level;
+        return level * (level + 1)/2;
     }
 
     void levelUp()
     {
+        Debug.Log("Leveled Up!");
         this.xp -= levelUpCost();
         this.level += 1;
 

@@ -76,7 +76,13 @@ public class PlayerAttack : MonoBehaviour
                 {
                     critMultiplier = 1.5f;
                 }
+                float xpOnDeath = enemy.xpOnDeath();
                 enemy.TakeDamage(playerInfo.Attack * critMultiplier);
+                if (enemy == null || enemy.isDead())
+                {
+                    Debug.Log("Yay!");
+                    playerInfo.addxp(xpOnDeath);
+                }
             }
         }
     }
