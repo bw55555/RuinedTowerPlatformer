@@ -9,7 +9,7 @@ public class MainController : MonoBehaviour
     public GameObject terrainGenerationPrefab;
     private TerrainGeneration terrainGeneration;
 
-    private int level = 0;
+    public int level = 0;
     private float scaling;
 
     private Transform player;

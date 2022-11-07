@@ -198,7 +198,7 @@ public class TerrainGeneration : MonoBehaviour
 
             currLine += Random.Range(0, enemy_density);
         }
-
+ 
     }
 
     void generateFlyingEnemies(int top, int bottom)
