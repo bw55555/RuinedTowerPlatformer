@@ -363,6 +363,7 @@ MonoBehaviour:
   platform: {fileID: 11400000, guid: 11070530fbbabea4b9e28fb3e4cb43ea, type: 2}
   vine: {fileID: 11400000, guid: 2cd8c50c9428c9f4caeb2bca0177c8d0, type: 2}
   wall: {fileID: 11400000, guid: cb74e410a9b8961498cbe88cccf630c5, type: 2}
+  backgroundTile: {fileID: 11400000, guid: e38994da8c0b6fc41a95fff3ee8078f4, type: 2}
   torch: {fileID: 6043205147425256754, guid: 5d2eddd7cab88094f832b4386c4e01e6, type: 3}
   door: {fileID: 2238554693658992109, guid: 82bf3ee87bf104a44b47df814cfdd207, type: 3}
   skeleton: {fileID: 7020283686449906759, guid: 5a1d719d0958cbf46aee33332d119e73,
@@ -371,7 +372,7 @@ MonoBehaviour:
   knight: {fileID: 7228706820069221286, guid: 0d65e3cd9a85c864c9a8ae67e3f0574f, type: 3}
   demon: {fileID: 327215389964425182, guid: 696709670619b3949afddf92c57bd17e, type: 3}
   platformTileMap: {fileID: 2577608042568152007}
-  vineTileMap: {fileID: 2577608043517506152}
+  backgroundTileMap: {fileID: 2577608043517506152}
 --- !u!1 &2577608043517506155
 GameObject:
   m_ObjectHideFlags: 0
@@ -480,7 +481,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
