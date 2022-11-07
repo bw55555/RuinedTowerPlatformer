@@ -38,7 +38,7 @@ public class MainController : MonoBehaviour
         nextLevel();
     }
 
-    void nextLevel()
+    public void nextLevel()
     {
         level += 1;
         terrainGeneration = Instantiate(terrainGenerationPrefab).GetComponent<TerrainGeneration>();
