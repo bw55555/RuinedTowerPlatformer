@@ -18,9 +18,14 @@ public class TrackPlayerDown : MonoBehaviour
     void Update()
     {
         trackedValue = Mathf.Clamp(player.transform.position.y, - 1 * MainController.Instance.endHeight() + bottomClamp, trackedValue);
-
-        transform.position = new Vector3(player.transform.position.x, 
-            Mathf.Clamp(player.transform.position.y, -1 * MainController.Instance.endHeight() + bottomClamp, trackedValue + m_scrollUp), player.transform.position.z);
+        if (MainController.Instance.isInSideRoom())
+        {
+            transform.position = player.transform.position;
+        } else
+        {
+            transform.position = new Vector3(player.transform.position.x,
+                Mathf.Clamp(player.transform.position.y, -1 * MainController.Instance.endHeight() + bottomClamp, trackedValue + m_scrollUp), player.transform.position.z);
+        }
     }
 
     void resetTracker()
