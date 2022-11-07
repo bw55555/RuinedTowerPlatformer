@@ -41,7 +41,7 @@ public class SkillContainer : MonoBehaviour
         addSkill(SkillType.Health_Potion, 60f, 0);
 
         getSkill(SkillType.Attack).Active = true;
-        //getSkill(SkillType.DoubleJump).Active = true;
+        getSkill(SkillType.DoubleJump).Active = true;
         //getSkill(SkillType.Dash).Active = true;
         //getSkill(SkillType.Thornmail).Active = true;
         //getSkill(SkillType.Extra_Damage).Active = true;
