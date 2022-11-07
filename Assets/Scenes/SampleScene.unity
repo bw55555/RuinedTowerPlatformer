@@ -359,6 +359,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6043205147425254093, guid: 5d2eddd7cab88094f832b4386c4e01e6,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
     - target: {fileID: 6043205147425256754, guid: 5d2eddd7cab88094f832b4386c4e01e6,
         type: 3}
       propertyPath: m_Name
@@ -911,7 +916,7 @@ MonoBehaviour:
   m_Color: {r: 0.40330186, g: 0.4069473, b: 0.5377358, a: 1}
   m_Intensity: 1
   m_LightVolumeOpacity: 0
-  m_ApplyToSortingLayers: 00000000
+  m_ApplyToSortingLayers: 0000000087e226c9
   m_LightCookieSprite: {fileID: 0}
   m_UseNormalMap: 0
   m_LightOrder: 0
