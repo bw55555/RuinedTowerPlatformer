@@ -54,6 +54,7 @@ public class EnemyMovement : MonoBehaviour
             Flip(true);
         }
         anim.SetFloat("Speed", Mathf.Abs(rb.velocity.x));
+        
     }
 
     void Flip()
@@ -113,6 +114,7 @@ public class EnemyMovement : MonoBehaviour
         if (checkForGroundAhead())
         {
             rb.velocity = new Vector2(xDir * moveSpeed, rb.velocity.y);
+            
         }
         else
         {

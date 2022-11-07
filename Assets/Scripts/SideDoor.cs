@@ -9,6 +9,8 @@ public class SideDoor : MonoBehaviour
     private GameObject roomGenerationPrefab;
     private RoomGenerate roomGeneration;
     private List<GameObject> roomList;
+    public GameObject torch;
+    public bool Checked;
 
     public GameObject monsterRoomPrefab;
     public GameObject healthRoomPrefab;
@@ -21,14 +23,15 @@ public class SideDoor : MonoBehaviour
         GameObject[] playerarr;
         playerarr = GameObject.FindGameObjectsWithTag("Player");
         player = playerarr[0].transform;
+        Checked = false;
     }
 
-    private void OnTriggerStay2D(Collider2D collision)
+    void OnTriggerStay2D(Collider2D collision)
     {
-        
-        if (collision.gameObject.tag.Equals("Player") && Input.GetKeyDown(KeyCode.E))
+
+        if (collision.gameObject.tag.Equals("Player") && !Checked && Input.GetKeyDown(KeyCode.E))
         {
-            int roomNum = Random.Range(0, 3);
+            int roomNum = Random.Range(1, 2);
             if (roomNum == 0)
             {
                 roomGenerationPrefab = chestRoomPrefab;
@@ -45,10 +48,16 @@ public class SideDoor : MonoBehaviour
             {
                 roomGenerationPrefab = healthRoomPrefab;
             }
-            
-            
-            roomGeneration = Instantiate(roomGenerationPrefab, new Vector3(player.position.x - 100, player.position.y, player.position.z), player.rotation).GetComponent<RoomGenerate>();
-            player.position = new Vector3(player.position.x - 100, player.position.y, player.position.z);
+
+            int xPos = Mathf.RoundToInt(player.position.x - 100);
+            int yPos = Mathf.RoundToInt(player.position.y);
+            roomGeneration = Instantiate(roomGenerationPrefab, new Vector3(xPos, yPos, player.position.z + 1), player.rotation).GetComponent<RoomGenerate>();
+            player.position = new Vector3(player.position.x - 92, player.position.y - 2, player.position.z);
+            Checked = true;
+            Instantiate(torch, new Vector3Int(xPos - 5, yPos, 0), Quaternion.identity);
+            Instantiate(torch, new Vector3Int(xPos + 5, yPos, 0), Quaternion.identity);
         }
     }
+
+    
 }

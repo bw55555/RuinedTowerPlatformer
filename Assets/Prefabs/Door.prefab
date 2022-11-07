@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2238554693658992108}
   - component: {fileID: -2798332362400303698}
   - component: {fileID: 4871914009418180087}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,6 +95,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2b1ca284cbddc8488d939f9f835276d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  torch: {fileID: 6043205147425256754, guid: 5d2eddd7cab88094f832b4386c4e01e6, type: 3}
   monsterRoomPrefab: {fileID: 4031679703154193566, guid: 27848ee8dd4a0714f92948f4d23d7181,
     type: 3}
   healthRoomPrefab: {fileID: 7723484089501980648, guid: 83ec70001225ddc489533dd5e82c89e8,
@@ -127,5 +128,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 2}
+  m_Size: {x: 1.78, y: 2}
   m_EdgeRadius: 0

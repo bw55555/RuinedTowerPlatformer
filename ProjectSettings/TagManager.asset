@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - DistanceTracker
+  - BigCamera
   layers:
   - Default
   - TransparentFX
@@ -16,7 +17,6 @@ TagManager:
   - 
   - Player
   - Ground
-  - 
   - 
   - 
   - 

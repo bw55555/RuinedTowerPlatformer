@@ -8,6 +8,7 @@ public class MainController : MonoBehaviour
 
     public GameObject terrainGenerationPrefab;
     private TerrainGeneration terrainGeneration;
+    public GameObject BigCamera;
 
     public int level = 0;
     private float scaling;
@@ -52,6 +53,7 @@ public class MainController : MonoBehaviour
     void Update()
     {
         distanceBar.setValue(Mathf.Clamp(-player.position.y, 0, endHeight()));
+        
     }
 
     public int endHeight()
