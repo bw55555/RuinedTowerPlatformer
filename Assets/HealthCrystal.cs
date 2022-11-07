@@ -18,7 +18,7 @@ public class HealthCrystal : MonoBehaviour
     void OnTriggerStay2D(Collider2D collision)
     {
 
-        if (collision.gameObject.tag.Equals("Player") && Input.GetKeyDown(KeyCode.E))
+        if (collision.gameObject.tag.Equals("Player"))
         {
             PlayerInfo play = playerarr[0].GetComponent<PlayerInfo>();
             play.setCurrentHealth(play.MaxHealth);
