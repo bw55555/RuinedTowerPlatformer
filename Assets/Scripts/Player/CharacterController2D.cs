@@ -17,6 +17,7 @@ public class CharacterController2D : MonoBehaviour
 	[Header("Dash")]
 	[SerializeField] private float m_DashForce = 20f;
 	[SerializeField] private float m_DashTime = 0.5f;
+	public GameObject dashEffect;
 
 	private float dashTime = 0.0f;
 	private float prevVelocityY = 0f;
@@ -119,10 +120,10 @@ public class CharacterController2D : MonoBehaviour
 		if (dashTime > 0)
         {
 			dashTime -= Time.deltaTime;
-			m_Rigidbody2D.velocity = new Vector2(m_DashForce, 0);
+			m_Rigidbody2D.velocity = new Vector2(m_DashForce * dashDirection, 0);
 			if (dashTime <= 0)
             {
-				m_Rigidbody2D.velocity = new Vector2(m_DashForce, prevVelocityY);
+				m_Rigidbody2D.velocity = new Vector2(m_DashForce * dashDirection, prevVelocityY);
             }
         } 
 
@@ -209,6 +210,7 @@ public class CharacterController2D : MonoBehaviour
 			dashDirection = m_FacingRight ? 1 : -1;
 			dashTime = m_DashTime;
 			m_Rigidbody2D.velocity = new Vector2(m_DashForce, 0);
+			Instantiate(dashEffect, transform.position, Quaternion.identity);
 		}
 	}
 
