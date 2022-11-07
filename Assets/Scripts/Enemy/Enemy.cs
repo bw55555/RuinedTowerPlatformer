@@ -16,7 +16,6 @@ public class Enemy : MonoBehaviour
 
     private float maxFlashTime = 0.3f;
     public int CurrentHealth { get => currentHealth; set => currentHealth = value; }
-    
 
     private void Awake()
     {
@@ -26,6 +25,7 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     public void TakeDamage(int damage)
     {
+        
         Debug.Log("took damage", gameObject);
         currentHealth -= damage;
         flashTime = maxFlashTime;
@@ -43,8 +43,6 @@ public class Enemy : MonoBehaviour
         Debug.Log("You killed an enemy");
         //healthBar.ToggleActive(false);
         //anim.SetTrigger("Dead");
-        PlayerInfo playerInfo = GetComponent<PlayerInfo>();
-        playerInfo.Score = playerInfo.Score + 20;
         GetComponent<Collider2D>().enabled = false;
         Destroy(gameObject, 0.5f);
     }
