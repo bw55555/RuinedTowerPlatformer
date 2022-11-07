@@ -42,6 +42,7 @@ public class SkillContainer : MonoBehaviour
 
         getSkill(SkillType.Attack).Active = true;
         getSkill(SkillType.DoubleJump).Active = true;
+        getSkill(SkillType.Dash).Active = true;
     }
 
     void Start()

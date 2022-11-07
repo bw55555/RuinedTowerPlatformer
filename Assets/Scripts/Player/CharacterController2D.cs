@@ -12,7 +12,15 @@ public class CharacterController2D : MonoBehaviour
 	[SerializeField] private Transform m_GroundCheck;							// A position marking where to check if the player is grounded.
 	[SerializeField] private Transform m_CeilingCheck;							// A position marking where to check for ceilings
 	[SerializeField] private Collider2D m_CrouchDisableCollider;                // A collider that will be disabled when crouching
-	
+
+
+	[Header("Dash")]
+	[SerializeField] private float m_DashForce = 20f;
+	[SerializeField] private float m_DashTime = 0.5f;
+
+	private float dashTime = 0.0f;
+	private float prevVelocityY = 0f;
+	private float dashDirection = 0f;
 
 	private float inAirTime = 0.0f;
 	private float onGroundTime = 0.0f;
@@ -90,8 +98,12 @@ public class CharacterController2D : MonoBehaviour
         }
 	}
 
+	public bool isDashing()
+    {
+		return dashTime > 0;
+    }
 
-	public void Move(float move, bool crouch, bool jump)
+	public void Move(float move, bool crouch, bool jump, bool dash)
 	{
 		// If crouching, check to see if the character can stand up
 		if (!crouch)
@@ -102,6 +114,17 @@ public class CharacterController2D : MonoBehaviour
 				crouch = true;
 			}
 		}
+
+		
+		if (dashTime > 0)
+        {
+			dashTime -= Time.deltaTime;
+			m_Rigidbody2D.velocity = new Vector2(m_DashForce, 0);
+			if (dashTime <= 0)
+            {
+				m_Rigidbody2D.velocity = new Vector2(m_DashForce, prevVelocityY);
+            }
+        } 
 
 		//only control the player if grounded or airControl is turned on
 		if (m_Grounded || m_AirControl)
@@ -178,6 +201,14 @@ public class CharacterController2D : MonoBehaviour
                 SoundManager.Instance.playSound(SoundManager.Instance.player_jump);
                 doubleJumped = true;
 			}
+		}
+
+		if (dash)
+        {
+			prevVelocityY = m_Rigidbody2D.velocity.y;
+			dashDirection = m_FacingRight ? 1 : -1;
+			dashTime = m_DashTime;
+			m_Rigidbody2D.velocity = new Vector2(m_DashForce, 0);
 		}
 	}
 
