@@ -21,7 +21,7 @@ public class HealthCrystal : MonoBehaviour
         if (collision.gameObject.tag.Equals("Player") && Input.GetKeyDown(KeyCode.E))
         {
             PlayerInfo play = playerarr[0].GetComponent<PlayerInfo>();
-            play.healthBar.setValue(play.MaxHealth);
+            play.setCurrentHealth(play.MaxHealth);
         }
     }
 

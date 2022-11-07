@@ -13,7 +13,7 @@ public class TriggerDoor : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.CompareTag("Player"))
+        if (col.CompareTag("Player") && Input.GetKeyDown(KeyCode.E))
         {
             StartCoroutine("Leave");
         }
@@ -21,7 +21,7 @@ public class TriggerDoor : MonoBehaviour
 
     void OnTriggerStay2D(Collider2D col)
     {
-        if (col.CompareTag("Player"))
+        if (col.CompareTag("Player") && Input.GetKeyDown(KeyCode.E))
         {
             StartCoroutine("Leave");
         }
@@ -31,7 +31,7 @@ public class TriggerDoor : MonoBehaviour
     {
         anim.SetBool("Fade", true);
         yield return new WaitUntil(() => blac.color.a == 1);
-        SceneManager.LoadScene(scene);
+        MainController.Instance.nextLevel();
     }
 
 }

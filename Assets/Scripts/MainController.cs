@@ -44,12 +44,17 @@ public class MainController : MonoBehaviour
 
     public void nextLevel()
     {
+        if (terrainGeneration != null)
+        {
+            Destroy(terrainGeneration.gameObject);
+        }
         level += 1;
         terrainGeneration = Instantiate(terrainGenerationPrefab).GetComponent<TerrainGeneration>();
         terrainGeneration.height = 50 + level * 50 + Mathf.Clamp(level -1, 0, 5) * 50;
         terrainGeneration.createTerrain();
         distanceBar.setMaxValue(endHeight());
         player.position = new Vector3(terrainGeneration.width / 2, 0, 0);
+        toNextLevel.Invoke();
     }
 
     // Update is called once per frame

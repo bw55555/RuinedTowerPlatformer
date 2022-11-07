@@ -34,7 +34,11 @@ public class PlayerInfo : MonoBehaviour
         rb2D = GetComponent<Rigidbody2D>();
     }
 
-
+    public void setCurrentHealth(float health)
+    {
+        currentHealth = health;
+        healthBar.setValue(currentHealth);
+    }
     void respawn()
     {
         currentHealth = maxHealth;

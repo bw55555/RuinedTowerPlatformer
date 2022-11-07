@@ -13,6 +13,7 @@ public class TerrainAssets : MonoBehaviour
 
     public GameObject torch;
     public GameObject door;
+    public GameObject nextLevelDoor;
     public static TerrainAssets Instance;
 
     
@@ -25,14 +26,15 @@ public class TerrainAssets : MonoBehaviour
 
     public Tilemap platformTileMap;
     public Tilemap backgroundTileMap;
-    public void createObject(TerrainType type, int xpos, int ypos)
+    public void createObject(TerrainType type, GameObject parent, int xpos, int ypos)
     {
         switch (type)
         {
             case TerrainType.Platform: platformTileMap.SetTile(new Vector3Int(xpos, ypos, 0), platform); return;
             case TerrainType.Wall: platformTileMap.SetTile(new Vector3Int(xpos, ypos, 0), wall); return;
-            case TerrainType.Torch: Instantiate(torch, new Vector3Int(xpos, ypos, 0), Quaternion.identity); return;
-            case TerrainType.Door: Instantiate(door, new Vector3Int(xpos, ypos, 1), Quaternion.identity); return;
+            case TerrainType.Torch: Instantiate(torch, new Vector3Int(xpos, ypos, 0), Quaternion.identity, parent.transform); return;
+            case TerrainType.Door: Instantiate(door, new Vector3Int(xpos, ypos, 1), Quaternion.identity, parent.transform); return;
+            case TerrainType.NextLevelDoor: Instantiate(nextLevelDoor, new Vector3Int(xpos, ypos, 1), Quaternion.identity, parent.transform); return;
         }
 
     }

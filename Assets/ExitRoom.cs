@@ -16,6 +16,17 @@ public class ExitRoom : MonoBehaviour
     void OnTriggerStay2D(Collider2D collision)
     {
 
+        checkLeaveRoom(collision);
+    }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+
+        checkLeaveRoom(collision);
+    }
+
+    void checkLeaveRoom(Collider2D collision)
+    {
         if (collision.gameObject.tag.Equals("Player") && Input.GetKeyDown(KeyCode.E))
         {
             float xPos = MainController.Instance.lastPosition.position.x;
