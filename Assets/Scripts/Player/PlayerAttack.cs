@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
+    
     public Transform hitbox;
     public float attackRange = 1f;
     public LayerMask enemyLayers;
@@ -20,9 +21,12 @@ public class PlayerAttack : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
+            
             Skill s = SkillContainer.Instance.getSkill(SkillType.Attack);
             if (s.isReady())
             {
+                SoundManager.Instance.playSound(SoundManager.Instance.player_attack);
+                Debug.Log(SoundManager.Instance.player_attack);
                 s.useSkill();
                 Attack();
             }
