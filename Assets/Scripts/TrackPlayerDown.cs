@@ -9,9 +9,9 @@ public class TrackPlayerDown : MonoBehaviour
     public GameObject player;
     private float trackedValue;
     public int bottomClamp = 10;
-    void Start()
+    void Awake()
     {
-        
+        MainController.Instance.toNextLevel.AddListener(resetTracker);
     }
 
     // Update is called once per frame
@@ -21,5 +21,10 @@ public class TrackPlayerDown : MonoBehaviour
 
         transform.position = new Vector3(player.transform.position.x, 
             Mathf.Clamp(player.transform.position.y, -1 * MainController.Instance.endHeight() + bottomClamp, trackedValue + m_scrollUp), player.transform.position.z);
+    }
+
+    void resetTracker()
+    {
+        trackedValue = 0;
     }
 }
