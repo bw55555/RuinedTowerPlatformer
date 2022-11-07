@@ -49,6 +49,7 @@ public class SideDoor : MonoBehaviour
                 roomGenerationPrefab = healthRoomPrefab;
             }
 
+            MainController.Instance.lastPosition = gameObject.transform;
             int xPos = Mathf.RoundToInt(player.position.x - 100);
             int yPos = Mathf.RoundToInt(player.position.y);
             roomGeneration = Instantiate(roomGenerationPrefab, new Vector3(xPos, yPos, player.position.z + 1), player.rotation).GetComponent<RoomGenerate>();

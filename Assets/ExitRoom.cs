@@ -18,16 +18,10 @@ public class ExitRoom : MonoBehaviour
 
         if (collision.gameObject.tag.Equals("Player") && Input.GetKeyDown(KeyCode.E))
         {
-            player.position = new Vector3(player.position.x + 92, player.position.y + 4, player.position.z);
+            float xPos = MainController.Instance.lastPosition.position.x;
+            float yPos = MainController.Instance.lastPosition.position.y;
+            player.position = new Vector3(xPos, yPos, player.position.z);
         }
     }
 
-    void OnTriggerEnter2D(Collider2D collision)
-    {
-
-        if (collision.gameObject.tag.Equals("Player") && Input.GetKeyDown(KeyCode.E))
-        {
-            player.position = new Vector3(player.position.x + 92, player.position.y + 4, player.position.z);
-        }
-    }
 }
