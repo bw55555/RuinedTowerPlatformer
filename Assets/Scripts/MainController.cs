@@ -58,6 +58,7 @@ public class MainController : MonoBehaviour
         terrainGeneration.createTerrain();
         distanceBar.setMaxValue(endHeight());
         player.position = new Vector3(terrainGeneration.width / 2, 0, 0);
+        SoundManager.Instance.playSound(SoundManager.Instance.next_level);
         toNextLevel.Invoke();
     }
 
