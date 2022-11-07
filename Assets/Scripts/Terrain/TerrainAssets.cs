@@ -9,6 +9,7 @@ public class TerrainAssets : MonoBehaviour
     public TileBase platform;
     public TileBase vine;
     public TileBase wall;
+    public TileBase backgroundTile;
 
     public GameObject torch;
     public GameObject door;
@@ -26,14 +27,13 @@ public class TerrainAssets : MonoBehaviour
     }
 
     public Tilemap platformTileMap;
-    public Tilemap vineTileMap;
+    public Tilemap backgroundTileMap;
     public void createObject(TerrainType type, int xpos, int ypos)
     {
         switch (type)
         {
             case TerrainType.Platform: platformTileMap.SetTile(new Vector3Int(xpos, ypos, 0), platform); return;
             case TerrainType.Wall: platformTileMap.SetTile(new Vector3Int(xpos, ypos, 0), wall); return;
-            case TerrainType.EnemySpawnLoc: vineTileMap.SetTile(new Vector3Int(xpos, ypos, 0), vine); return;
             case TerrainType.Torch: Instantiate(torch, new Vector3Int(xpos, ypos, 0), Quaternion.identity); return;
             case TerrainType.Door: Instantiate(door, new Vector3Int(xpos, ypos, 0), Quaternion.identity); return;
         }
@@ -49,5 +49,16 @@ public class TerrainAssets : MonoBehaviour
             case EnemyType.Knight: Instantiate(knight, new Vector3(xpos + 1f, ypos, 0), Quaternion.identity); return;
             case EnemyType.Demon: Instantiate(demon, new Vector3(xpos + 1f, ypos, 0), Quaternion.identity); return;
         }
+    }
+
+    public void createBackground(Vector3Int[] tiles)
+    {
+        TileBase[] tilebase = new TileBase[tiles.Length];
+        for (int i = 0;i<tiles.Length;i++)
+        {
+            tilebase[i] = backgroundTile;
+        }
+
+        backgroundTileMap.SetTiles(tiles, tilebase);
     }
 }

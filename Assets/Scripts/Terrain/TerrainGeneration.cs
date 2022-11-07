@@ -418,5 +418,20 @@ public class TerrainGeneration : MonoBehaviour
                 }
             }
         }
+
+        instantiateBackground();
+    }
+
+    void instantiateBackground()
+    {
+        Vector3Int[] setTiles = new Vector3Int[grid.Count * width];
+        for (int i = 0; i<grid.Count;i++)
+        {
+            for (int j = 0;j<width; j++)
+            {
+                setTiles[i * width + j] = new Vector3Int(j, -i, 0);
+            }
+        }
+        TerrainAssets.Instance.createBackground(setTiles);
     }
 }
