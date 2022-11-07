@@ -24,6 +24,12 @@ public class SoundManager : MonoBehaviour
     public AudioClip music2;
     public AudioClip shop_music;
     public AudioClip titlescreen_music;
+    public AudioClip next_level;
+    public AudioClip open_chest;
+    public AudioClip open_door;
+    public AudioClip UI_button_pressed;
+    public AudioClip UI_button_go_back;
+    public AudioClip use_rope;
     AudioSource theSource;
 
     private AudioSource soundEffectAudio;

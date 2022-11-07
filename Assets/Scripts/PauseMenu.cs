@@ -15,10 +15,12 @@ public class PauseMenu : MonoBehaviour
         {
             if(GameIsPaused)
             {
+                SoundManager.Instance.playSound(SoundManager.Instance.UI_button_go_back);
                 Resume();
             }
             else
             {
+                SoundManager.Instance.playSound(SoundManager.Instance.UI_button_pressed);
                 Pause();
             }
         }        

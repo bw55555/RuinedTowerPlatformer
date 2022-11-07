@@ -40,6 +40,7 @@ public class PlayerMovement : MonoBehaviour
         {
             SkillContainer.Instance.useSkill(SkillType.Dash);
             dash = true;
+            SoundManager.Instance.playSound(SoundManager.Instance.dash);
             animator.SetTrigger("Dash");
         }
 
