@@ -44,7 +44,9 @@ public class Enemy : MonoBehaviour
         //healthBar.ToggleActive(false);
         //anim.SetTrigger("Dead");
         GetComponent<Collider2D>().enabled = false;
-        Destroy(gameObject, 0.5f);
+        Instantiate(EnemyAssets.Instance.enemyDeath, transform.position, Quaternion.identity);
+        Destroy(gameObject);
+        
     }
 
     private void FixedUpdate()
