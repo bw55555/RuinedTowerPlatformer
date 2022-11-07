@@ -51,9 +51,7 @@ public class EnemyMovement : MonoBehaviour
     {
         if (rb.velocity.x * (facingRight ? 1 : -1) < 0)
         {
-            Debug.Log("unflipped: " + rb.velocity.x + " " + facingRight);
             Flip(true);
-            Debug.Log("flipped: " + rb.velocity.x + " " + facingRight);
         }
         anim.SetFloat("Speed", Mathf.Abs(rb.velocity.x));
     }

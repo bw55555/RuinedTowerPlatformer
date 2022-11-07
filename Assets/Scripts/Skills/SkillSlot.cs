@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SkillSlot : MonoBehaviour
 {
@@ -16,8 +17,8 @@ public class SkillSlot : MonoBehaviour
     {
         
         Skill s = SkillContainer.Instance.getSkill(type);
-        
-        gameObject.SetActive(s.Active);
+
+        gameObject.GetComponent<Image>().enabled = s.Active;
         cooldown.transform.localScale = new Vector3(1, Mathf.Max(0f, s.CurrentCooldown / s.Cooldown), 1);
 
     }

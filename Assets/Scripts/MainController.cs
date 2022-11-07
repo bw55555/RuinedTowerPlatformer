@@ -15,6 +15,7 @@ public class MainController : MonoBehaviour
     private Transform player;
 
     public ProgressBar distanceBar;
+    
 
     
 
@@ -40,6 +41,7 @@ public class MainController : MonoBehaviour
 
     void nextLevel()
     {
+        GetComponent<PlayerInfo>().Score += (int)Mathf.Round(player.position.y);
         level += 1;
         terrainGeneration = Instantiate(terrainGenerationPrefab).GetComponent<TerrainGeneration>();
         terrainGeneration.height = 50 + level * 50 + Mathf.Clamp(level -1, 0, 5) * 50;
