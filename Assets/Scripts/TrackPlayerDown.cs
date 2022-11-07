@@ -9,8 +9,10 @@ public class TrackPlayerDown : MonoBehaviour
     public GameObject player;
     private float trackedValue;
     public int bottomClamp = 10;
+    public int topClamp = 10;
     void Awake()
     {
+        resetTracker();
         MainController.Instance.toNextLevel.AddListener(resetTracker);
     }
 
@@ -30,6 +32,6 @@ public class TrackPlayerDown : MonoBehaviour
 
     void resetTracker()
     {
-        trackedValue = 0;
+        trackedValue = -topClamp;
     }
 }

@@ -286,6 +286,7 @@ MonoBehaviour:
   m_scrollUp: 4
   player: {fileID: 1674401212}
   bottomClamp: 10
+  topClamp: 15
 --- !u!4 &877413349
 Transform:
   m_ObjectHideFlags: 0
@@ -1580,6 +1581,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2538814161017880350, guid: 975bfc89d0ae7544cac002ffabdb1836,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5868988745460634161, guid: 975bfc89d0ae7544cac002ffabdb1836,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8293279468715246658, guid: 975bfc89d0ae7544cac002ffabdb1836,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8363038841360818281, guid: 975bfc89d0ae7544cac002ffabdb1836,
         type: 3}
       propertyPath: m_Name

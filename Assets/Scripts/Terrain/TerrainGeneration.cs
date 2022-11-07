@@ -40,7 +40,7 @@ public class TerrainGeneration : MonoBehaviour
     public void createTerrain()
     {
         generateSectionStart();
-        generate(11, height);
+        generate(14, height);
 
         instantiate();
     }
@@ -79,7 +79,7 @@ public class TerrainGeneration : MonoBehaviour
 
     void generateSectionStart()
     {
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < 13; i++)
         {
             grid.Add(new List<TerrainObject>());
             for (int j = 0; j < width; j++)
@@ -91,21 +91,21 @@ public class TerrainGeneration : MonoBehaviour
         int middle = width / 2;
         for (int i = 0;i < 4;i++)
         {
-            grid[5][middle - 2 + i] = new Platform(new Vector2Int(5, middle - 2 + i));
+            grid[8][middle - 2 + i] = new Platform(new Vector2Int(8, middle - 2 + i));
         }
         for (int i = 0; i < 5; i++)
         {
-            grid[8][middle - 2 - i] = new Platform(new Vector2Int(8, middle - 2 - i));
+            grid[11][middle - 2 - i] = new Platform(new Vector2Int(11, middle - 2 - i));
         }
         for (int i = 0; i < 5; i++)
         {
-            grid[8][middle + 1 + i] = new Platform(new Vector2Int(8, middle + 1 + i));
+            grid[11][middle + 1 + i] = new Platform(new Vector2Int(11, middle + 1 + i));
         }
 
-        grid[6][middle - 6] = new Torch(new Vector2Int(6, middle - 6));
-        grid[2][middle - 3] = new Torch(new Vector2Int(2, middle - 3));
-        grid[2][middle + 2] = new Torch(new Vector2Int(2, middle + 2));
-        grid[6][middle + 5] = new Torch(new Vector2Int(6, middle + 5));
+        grid[9][middle - 6] = new Torch(new Vector2Int(9, middle - 6));
+        grid[5][middle - 3] = new Torch(new Vector2Int(5, middle - 3));
+        grid[5][middle + 2] = new Torch(new Vector2Int(5, middle + 2));
+        grid[9][middle + 5] = new Torch(new Vector2Int(9, middle + 5));
         
     }
 
@@ -128,7 +128,6 @@ public class TerrainGeneration : MonoBehaviour
         }
 
         int middle = width / 2;
-        grid[grid.Count - 1][middle - 1] = new NextLevelDoor(new Vector2Int(grid.Count - 1, middle - 1));
 
         grid[grid.Count - 3][middle + 8] = new ShopSpawnLoc(new Vector2Int(grid.Count - 3, middle + 8));
         
@@ -143,6 +142,20 @@ public class TerrainGeneration : MonoBehaviour
         }
 
         
+        
+
+        grid[grid.Count - 5][middle - 1] = new Empty();
+        grid[grid.Count - 4][middle - 1] = new Empty();
+        grid[grid.Count - 3][middle - 1] = new Empty();
+        grid[grid.Count - 2][middle - 1] = new Empty();
+        grid[grid.Count - 1][middle - 1] = new Empty();
+        grid[grid.Count - 5][middle] = new Empty();
+        grid[grid.Count - 4][middle] = new Empty();
+        grid[grid.Count - 3][middle] = new Empty();
+        grid[grid.Count - 2][middle] = new Empty();
+        grid[grid.Count - 1][middle] = new Empty();
+
+        grid[grid.Count - 1][middle - 1] = new NextLevelDoor(new Vector2Int(grid.Count - 1, middle - 1));
 
         generateWalls(currHeight, grid.Count);
     }
