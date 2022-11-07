@@ -43,6 +43,7 @@ public class Enemy : MonoBehaviour
         Debug.Log("You killed an enemy");
         //healthBar.ToggleActive(false);
         //anim.SetTrigger("Dead");
+        SoundManager.Instance.playSound(SoundManager.Instance.enemy_death);
         GetComponent<Collider2D>().enabled = false;
         Instantiate(EnemyAssets.Instance.enemyDeath, transform.position, Quaternion.identity);
         Destroy(gameObject);
