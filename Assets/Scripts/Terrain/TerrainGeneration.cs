@@ -21,6 +21,7 @@ public class TerrainGeneration : MonoBehaviour
     public int enemy_spacing = 3;
     public int flying_enemy_density = 15;
     public int knight_enemy_density = 10;
+    public int demon_enemy_chance = 5;
     public int knight_enemy_chance = 10;
 
     private List<List<TerrainObject>> grid = new List<List<TerrainObject>>();
@@ -204,14 +205,17 @@ public class TerrainGeneration : MonoBehaviour
             List<Vector2Int> eligibleLocations = findByPattern(currLine, 0, currLine + 10, width, pattern);
             if (eligibleLocations.Count > 0)
             {
-                Vector2Int randomLoc = eligibleLocations[Random.Range(0, eligibleLocations.Count)];
-                if (isSpacedOut(randomLoc.x, randomLoc.y, enemy_spacing, TerrainType.EnemySpawnLoc))
+                if (Random.Range(0, demon_enemy_chance) == 0)
                 {
-                    EnemyType enemyType = EnemyType.Demon;
-                    grid[randomLoc.x + 1][randomLoc.y + 1] = new EnemySpawnLoc(randomLoc + new Vector2Int(1, 1), enemyType);
-                    grid[randomLoc.x + 2][randomLoc.y + 1] = new Air(randomLoc + new Vector2Int(2, 1));
-                    grid[randomLoc.x + 1][randomLoc.y + 2] = new Air(randomLoc + new Vector2Int(1, 2));
-                    grid[randomLoc.x + 2][randomLoc.y + 2] = new Air(randomLoc + new Vector2Int(2, 2));
+                    Vector2Int randomLoc = eligibleLocations[Random.Range(0, eligibleLocations.Count)];
+                    if (isSpacedOut(randomLoc.x, randomLoc.y, enemy_spacing, TerrainType.EnemySpawnLoc))
+                    {
+                        EnemyType enemyType = EnemyType.Demon;
+                        grid[randomLoc.x + 1][randomLoc.y + 1] = new EnemySpawnLoc(randomLoc + new Vector2Int(1, 1), enemyType);
+                        grid[randomLoc.x + 2][randomLoc.y + 1] = new Air(randomLoc + new Vector2Int(2, 1));
+                        grid[randomLoc.x + 1][randomLoc.y + 2] = new Air(randomLoc + new Vector2Int(1, 2));
+                        grid[randomLoc.x + 2][randomLoc.y + 2] = new Air(randomLoc + new Vector2Int(2, 2));
+                    }
                 }
             }
 
@@ -238,19 +242,18 @@ public class TerrainGeneration : MonoBehaviour
                 Vector2Int randomLoc = eligibleLocations[Random.Range(0, eligibleLocations.Count)];
                 if (Random.Range(0, knight_enemy_chance) == 0)
                 {
-                    continue;
-                }
-                if (isSpacedOut(randomLoc.x, randomLoc.y, enemy_spacing, TerrainType.EnemySpawnLoc))
-                {
-                    EnemyType enemyType = EnemyType.Knight;
-                    grid[randomLoc.x + 1][randomLoc.y + 1] = new EnemySpawnLoc(randomLoc + new Vector2Int(1, 1), enemyType);
-                    grid[randomLoc.x + 2][randomLoc.y + 1] = new Air(randomLoc + new Vector2Int(2, 1));
-                    grid[randomLoc.x + 1][randomLoc.y + 2] = new Air(randomLoc + new Vector2Int(1, 2));
-                    grid[randomLoc.x + 2][randomLoc.y + 2] = new Air(randomLoc + new Vector2Int(2, 2));
-                    grid[randomLoc.x + 1][randomLoc.y + 3] = new Air(randomLoc + new Vector2Int(1, 3));
-                    grid[randomLoc.x + 1][randomLoc.y + 4] = new Air(randomLoc + new Vector2Int(1, 4));
-                    grid[randomLoc.x + 2][randomLoc.y + 3] = new Air(randomLoc + new Vector2Int(2, 3));
-                    grid[randomLoc.x + 2][randomLoc.y + 4] = new Air(randomLoc + new Vector2Int(2, 4));
+                    if (isSpacedOut(randomLoc.x, randomLoc.y, enemy_spacing, TerrainType.EnemySpawnLoc))
+                    {
+                        EnemyType enemyType = EnemyType.Knight;
+                        grid[randomLoc.x + 1][randomLoc.y + 1] = new EnemySpawnLoc(randomLoc + new Vector2Int(1, 1), enemyType);
+                        grid[randomLoc.x + 2][randomLoc.y + 1] = new Air(randomLoc + new Vector2Int(2, 1));
+                        grid[randomLoc.x + 1][randomLoc.y + 2] = new Air(randomLoc + new Vector2Int(1, 2));
+                        grid[randomLoc.x + 2][randomLoc.y + 2] = new Air(randomLoc + new Vector2Int(2, 2));
+                        grid[randomLoc.x + 1][randomLoc.y + 3] = new Air(randomLoc + new Vector2Int(1, 3));
+                        grid[randomLoc.x + 1][randomLoc.y + 4] = new Air(randomLoc + new Vector2Int(1, 4));
+                        grid[randomLoc.x + 2][randomLoc.y + 3] = new Air(randomLoc + new Vector2Int(2, 3));
+                        grid[randomLoc.x + 2][randomLoc.y + 4] = new Air(randomLoc + new Vector2Int(2, 4));
+                    }
                 }
             }
 
