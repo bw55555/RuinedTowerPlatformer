@@ -1,10 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using UnityEngine.UI;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
-public class TriggerDoor : MonoBehaviour
+public class FallDoor : MonoBehaviour
 {
+    public Animator anim;
+    public Image blac;
+    public int scene;
 
 
     void OnTriggerEnter2D(Collider2D col)
@@ -25,8 +29,8 @@ public class TriggerDoor : MonoBehaviour
 
     IEnumerator Leave()
     {
-        yield return new WaitForSeconds(1);
-        MainController.Instance.nextLevel();
+        anim.SetBool("Fade", true);
+        yield return new WaitUntil(() => blac.color.a == 1);
+        SceneManager.LoadScene(scene);
     }
-
 }
