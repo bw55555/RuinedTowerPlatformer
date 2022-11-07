@@ -18,6 +18,7 @@ public class RopeStation : MonoBehaviour
 
         if (collision.gameObject.tag.Equals("Player") && Input.GetKeyDown(KeyCode.E))
         {
+            SoundManager.Instance.playSound(SoundManager.Instance.use_rope);
             MainController.Instance.nextLevel();
         }
     }

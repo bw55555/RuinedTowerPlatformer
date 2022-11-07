@@ -59,6 +59,7 @@ public class MainController : MonoBehaviour
         distanceBar.setMaxValue(endHeight());
         player.position = new Vector3(terrainGeneration.width / 2, 0, 0);
         player.GetComponent<PlayerInfo>().setIframes(1f);
+        SoundManager.Instance.playSound(SoundManager.Instance.next_level);
         toNextLevel.Invoke();
     }
 
