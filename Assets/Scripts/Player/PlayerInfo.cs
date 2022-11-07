@@ -7,8 +7,8 @@ public class PlayerInfo : MonoBehaviour
 
     private float iframe_secs = 0.5f;
 
-    private int maxHealth = 100;
-    private int currentHealth = 100;
+    private float maxHealth = 100;
+    private float currentHealth = 100;
     private int xp = 0;
     private int level = 1;
     private int score = 0;
@@ -17,8 +17,8 @@ public class PlayerInfo : MonoBehaviour
 
     public ProgressBar healthBar;
 
-    public int MaxHealth { get => maxHealth; set => maxHealth = value; }
-    public int CurrentHealth { get => currentHealth; set => currentHealth = value; }
+    public float MaxHealth { get => maxHealth; set => maxHealth = value; }
+    public float CurrentHealth { get => currentHealth; set => currentHealth = value; }
     public int Xp { get => xp; set => xp = value; }
     public int Level { get => level; set => level = value; }
     public int Score { get => score; set => score = value; }
@@ -38,6 +38,7 @@ public class PlayerInfo : MonoBehaviour
     void respawn()
     {
         currentHealth = maxHealth;
+        healthBar.setMaxValue(maxHealth);
         xp = 0;
         level = 1;
         score = 0;
@@ -69,12 +70,14 @@ public class PlayerInfo : MonoBehaviour
         healthBar.setMaxValue(maxHealth);
     }
 
-    public void takeDamage(int damage)
+    public bool takeDamage(float damage)
     {
-        if (iframes > 0) { return; }
+        if (iframes > 0) { return false; }
         iframes = iframe_secs;
+        SoundManager.Instance.playSound(SoundManager.Instance.player_hit);
         currentHealth -= damage;
         healthBar.setValue(currentHealth);
+        return true;
     }
 
     private void Start()
@@ -105,7 +108,8 @@ public class PlayerInfo : MonoBehaviour
         }     
         if (currentHealth <= 0)
         {
-            score = 0;
+            Die();
+            
         }
     }
 
@@ -116,5 +120,19 @@ public class PlayerInfo : MonoBehaviour
             iframes -= Time.deltaTime;
         }
         
+    }
+
+    void Die()
+    {
+        if (SkillContainer.Instance.isSkillReady(SkillType.Invincibility))
+        {
+            SkillContainer.Instance.useSkill(SkillType.Invincibility);
+            currentHealth = maxHealth / 2;
+            healthBar.setValue(currentHealth);
+            //do not die, heal to half?
+            return; 
+        }
+        //death logic here
+        score = 0;
     }
 }

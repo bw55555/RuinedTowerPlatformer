@@ -194,6 +194,10 @@ MonoBehaviour:
   m_GroundCheck: {fileID: 8861389100559741435}
   m_CeilingCheck: {fileID: 5781659658919726927}
   m_CrouchDisableCollider: {fileID: 0}
+  m_DashForce: 50
+  m_DashTime: 0.1
+  dashEffect: {fileID: 8675100175991997122, guid: f6efabc6ea3b41e45b99059cdd8d7755,
+    type: 3}
   OnLandEvent:
     m_PersistentCalls:
       m_Calls:
@@ -246,7 +250,7 @@ MonoBehaviour:
   attackRange: 1
   enemyLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 4294967295
   animator: {fileID: 5781659658686017458}
 --- !u!114 &3627306257451072125
 MonoBehaviour:
@@ -260,6 +264,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db16fdb9af36f2e45a015e5af7021b8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healthBar: {fileID: 0}
 --- !u!1 &5781659658919726926
 GameObject:
   m_ObjectHideFlags: 0

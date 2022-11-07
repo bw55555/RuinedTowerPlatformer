@@ -6,27 +6,41 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    public int maxHealth = 100;
-    public int attack = 10;
+    public float base_health = 100;
+    public float health_scaling = 10;
+    public float base_attack = 10;
+    public float attack_scaling = 2;
     public int level = 1;
 
-    private int currentHealth;
+    private float maxHealth;
+
+    private float attack;
+
+    private float currentHealth;
 
     private float flashTime = 0f;
 
     private float maxFlashTime = 0.3f;
-    public int CurrentHealth { get => currentHealth; set => currentHealth = value; }
+    public float CurrentHealth { get => currentHealth; set => currentHealth = value; }
+    public float Attack { get => attack; set => attack = value; }
 
     private void Awake()
     {
         currentHealth = maxHealth;
+        spawn(MainController.Instance.Level);
     }
     
     // Update is called once per frame
-    public void TakeDamage(int damage)
+
+    public void spawn(int level)
     {
-        
-        Debug.Log("took damage", gameObject);
+        this.level = level;
+        attack = base_attack + attack_scaling * (level - 1);
+        maxHealth = base_health + health_scaling * (level - 1);
+        currentHealth = maxHealth;
+    }
+    public void TakeDamage(float damage)
+    {
         currentHealth -= damage;
         flashTime = maxFlashTime;
         GetComponent<EnemyMovement>().Stun(0.3f);
@@ -43,6 +57,7 @@ public class Enemy : MonoBehaviour
         Debug.Log("You killed an enemy");
         //healthBar.ToggleActive(false);
         //anim.SetTrigger("Dead");
+        SoundManager.Instance.playSound(SoundManager.Instance.enemy_death);
         GetComponent<Collider2D>().enabled = false;
         Instantiate(EnemyAssets.Instance.enemyDeath, transform.position, Quaternion.identity);
         Destroy(gameObject);

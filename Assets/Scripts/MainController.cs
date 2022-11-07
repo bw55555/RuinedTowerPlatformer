@@ -16,7 +16,7 @@ public class MainController : MonoBehaviour
 
     public ProgressBar distanceBar;
 
-    
+    public int Level { get => level; set => level = value; }
 
     private void Awake()
     {
@@ -38,7 +38,7 @@ public class MainController : MonoBehaviour
         nextLevel();
     }
 
-    void nextLevel()
+    public void nextLevel()
     {
         level += 1;
         terrainGeneration = Instantiate(terrainGenerationPrefab).GetComponent<TerrainGeneration>();

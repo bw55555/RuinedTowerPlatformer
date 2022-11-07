@@ -11,6 +11,7 @@ public class PlayerMovement : MonoBehaviour
     public Animator animator;
     bool paused;
     bool jump = false;
+    bool dash = false;
     private Rigidbody2D rb;
 
     private void Awake()
@@ -29,10 +30,17 @@ public class PlayerMovement : MonoBehaviour
         paused = menu.GameIsPaused;
         horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
 
-        if (Input.GetButtonDown("Jump"))
+        if (Input.GetButtonDown("Jump") && !controller.isDashing())
         {
             jump = true;
             animator.SetBool("isJumping", true);
+        }
+
+        if (Input.GetMouseButtonDown(1) && SkillContainer.Instance.isSkillReady(SkillType.Dash)) //right click
+        {
+            SkillContainer.Instance.useSkill(SkillType.Dash);
+            dash = true;
+            animator.SetTrigger("Dash");
         }
 
         if(!paused)
@@ -52,7 +60,8 @@ public class PlayerMovement : MonoBehaviour
     }
     void FixedUpdate()
     {
-        controller.Move(horizontalMove * Time.fixedDeltaTime, false, jump);
+        controller.Move(horizontalMove * Time.fixedDeltaTime, false, jump, dash);
         jump = false;
+        dash = false;
     }
 }

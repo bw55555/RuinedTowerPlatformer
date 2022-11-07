@@ -24,9 +24,7 @@ public class PlayerAttack : MonoBehaviour
             
             Skill s = SkillContainer.Instance.getSkill(SkillType.Attack);
             if (s.isReady())
-            {
-                
-               
+            {  
                 s.useSkill();
                 Attack();
             }
@@ -36,11 +34,9 @@ public class PlayerAttack : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         Enemy enemy = collision.collider.gameObject.GetComponent<Enemy>();
-        Debug.Log("Collision Detected", collision.otherCollider);
         if (enemy != null)
         {
-            Debug.Log("something is happening");
-            playerInfo.takeDamage(enemy.attack);
+            enemyAttack(enemy);
         }
     }
 
@@ -49,14 +45,23 @@ public class PlayerAttack : MonoBehaviour
         Enemy enemy = collision.collider.gameObject.GetComponent<Enemy>();
         if (enemy != null)
         {
-            playerInfo.takeDamage(enemy.attack);
+            enemyAttack(enemy);
+        }
+    }
+
+    void enemyAttack(Enemy enemy)
+    {
+        bool tookDamage = playerInfo.takeDamage(enemy.Attack);
+        if (tookDamage && SkillContainer.Instance.isSkillReady(SkillType.Thornmail))
+        {
+            SkillContainer.Instance.useSkill(SkillType.Thornmail);
+            enemy.TakeDamage(enemy.Attack / 2);
         }
     }
 
     void Attack()
     {
         animator.SetTrigger("Attack");
-        Debug.Log(SoundManager.Instance.player_attack);
         SoundManager.Instance.playSound(SoundManager.Instance.player_attack);
 
         Collider2D[] hit = Physics2D.OverlapCircleAll(hitbox.position, attackRange, enemyLayers);
@@ -66,7 +71,12 @@ public class PlayerAttack : MonoBehaviour
             Enemy enemy = coll.gameObject.GetComponent<Enemy>();
             if (enemy != null)
             {
-                enemy.TakeDamage(playerInfo.Attack);
+                float critMultiplier = 1;
+                if (SkillContainer.Instance.isSkillReady(SkillType.Extra_Damage) && Random.Range(0, 5) == 0)
+                {
+                    critMultiplier = 1.5f;
+                }
+                enemy.TakeDamage(playerInfo.Attack * critMultiplier);
             }
         }
     }

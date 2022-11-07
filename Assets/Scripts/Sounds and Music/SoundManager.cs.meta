@@ -1,0 +1,31 @@
+fileFormatVersion: 2
+guid: e1480bf68b3fb96408913ad3a119bb10
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - player_attack: {fileID: 8300000, guid: 5a5330a745c0ac24e9cbf319e6470b3a, type: 3}
+  - player_death: {fileID: 8300000, guid: 51122aac1290837439ce10830212a5f8, type: 3}
+  - player_hit: {fileID: 8300000, guid: c11214207288d504f92f157a67c055af, type: 3}
+  - player_jump: {fileID: 8300000, guid: 98ebabefd62d5344c87ad489ea3c5434, type: 3}
+  - demon_attack: {fileID: 8300000, guid: 35e6da6d0d018364d8b63f84b43c5661, type: 3}
+  - flyingknight_attack: {fileID: 8300000, guid: a5346cef21a1b4c4f93cec608f34a41e,
+      type: 3}
+  - skeleton_attack: {fileID: 8300000, guid: cbb4ca3b3426fcf4ebc74a3c64d3273c, type: 3}
+  - dash: {fileID: 8300000, guid: e9e432db034cd2a4eb4fb0dfeb4aa94f, type: 3}
+  - extra_damage: {fileID: 8300000, guid: ae2343d6f1f374142910fbd7175f2ad8, type: 3}
+  - health_potion: {fileID: 8300000, guid: 7a306eda37c1339429bd159a28e6577b, type: 3}
+  - invincibility: {fileID: 8300000, guid: 47036803b6ed043409672b52a31045a4, type: 3}
+  - second_jump: {fileID: 8300000, guid: 487d8541e31d1c5498f6dee6bd26e284, type: 3}
+  - slime_attack: {fileID: 8300000, guid: 02c5fbe15684c664abbb1c76effc3de1, type: 3}
+  - slime_jump: {instanceID: 0}
+  - enemy_death: {fileID: 8300000, guid: e044a4a238fe64648b0fec242711283d, type: 3}
+  - music1: {fileID: 8300000, guid: 4737aef764272764c80e2f23a1e0ef9a, type: 3}
+  - music2: {fileID: 8300000, guid: a3611a0471855aa489ec3cbcfaada92c, type: 3}
+  - shop_music: {fileID: 8300000, guid: b5aef8e152f02684b9d1118887b19d75, type: 3}
+  - titlescreen_music: {fileID: 8300000, guid: e7c5ee2b03fb13b4b8fb36782e7c7fe1, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

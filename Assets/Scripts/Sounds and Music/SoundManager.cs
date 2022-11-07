@@ -18,8 +18,12 @@ public class SoundManager : MonoBehaviour
     public AudioClip invincibility;
     public AudioClip second_jump;
     public AudioClip slime_attack;
-    public AudioClip Slime_jump;
+    public AudioClip slime_jump;
     public AudioClip enemy_death;
+    public AudioClip music1;
+    public AudioClip music2;
+    public AudioClip shop_music;
+    public AudioClip titlescreen_music;
     AudioSource theSource;
 
     private AudioSource soundEffectAudio;

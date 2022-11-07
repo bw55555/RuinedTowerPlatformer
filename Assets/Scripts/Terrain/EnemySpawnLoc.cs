@@ -29,7 +29,7 @@ public class EnemySpawnLoc : TerrainObject
     override
         public void instantiate()
     {
-        TerrainAssets.Instance.createEnemy(enemyType, gridPos.y, -gridPos.x);
+        EnemyAssets.Instance.createEnemy(enemyType, gridPos.y, -gridPos.x);
     }
     
 }
