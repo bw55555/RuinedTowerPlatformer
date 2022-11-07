@@ -604,9 +604,119 @@ Transform:
   - {fileID: 2964996170436144718}
   - {fileID: 2964996169510915077}
   - {fileID: 4057721157844046898}
+  - {fileID: 6950511493263865527}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7484078461601311549
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6950511493263865527}
+  - component: {fileID: 3662499670919117167}
+  - component: {fileID: 777242852518603553}
+  m_Layer: 0
+  m_Name: SoundController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6950511493263865527
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7484078461601311549}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -50.304363, y: 40.699123, z: 7.558079}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6173506284873586655}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &3662499670919117167
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7484078461601311549}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 0
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!114 &777242852518603553
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7484078461601311549}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1480bf68b3fb96408913ad3a119bb10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player_attack: {fileID: 8300000, guid: 1481eeb40170726419349726ba6570e5, type: 3}
+  player_death: {fileID: 8300000, guid: 51122aac1290837439ce10830212a5f8, type: 3}
+  player_hit: {fileID: 8300000, guid: c11214207288d504f92f157a67c055af, type: 3}
+  player_jump: {fileID: 8300000, guid: 98ebabefd62d5344c87ad489ea3c5434, type: 3}
+  demon_attack: {fileID: 8300000, guid: 35e6da6d0d018364d8b63f84b43c5661, type: 3}
+  flyingknight_attack: {fileID: 8300000, guid: a5346cef21a1b4c4f93cec608f34a41e, type: 3}
+  skeleton_attack: {fileID: 8300000, guid: cbb4ca3b3426fcf4ebc74a3c64d3273c, type: 3}
+  dash: {fileID: 8300000, guid: e9e432db034cd2a4eb4fb0dfeb4aa94f, type: 3}
+  extra_damage: {fileID: 8300000, guid: ae2343d6f1f374142910fbd7175f2ad8, type: 3}
+  health_potion: {fileID: 8300000, guid: 7a306eda37c1339429bd159a28e6577b, type: 3}
+  invincibility: {fileID: 8300000, guid: 47036803b6ed043409672b52a31045a4, type: 3}
+  second_jump: {fileID: 8300000, guid: 487d8541e31d1c5498f6dee6bd26e284, type: 3}
+  slime_attack: {fileID: 8300000, guid: 02c5fbe15684c664abbb1c76effc3de1, type: 3}
+  Slime_jump: {fileID: 8300000, guid: 887e964ea18a5da4ebc5ae9958c25e10, type: 3}
+  enemy_death: {fileID: 8300000, guid: e044a4a238fe64648b0fec242711283d, type: 3}
 --- !u!1 &7762803658306998199
 GameObject:
   m_ObjectHideFlags: 0
@@ -652,6 +762,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyDeath: {fileID: 2523484671280674254, guid: 54507fa82bf644340a2f414681670ede,
     type: 3}
+  skeleton: {fileID: 0}
+  slime: {fileID: 0}
+  knight: {fileID: 0}
+  demon: {fileID: 0}
 --- !u!1001 &2964996169341722818
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -736,15 +850,15 @@ PrefabInstance:
       objectReference: {fileID: 2964996171291163666}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 374a403ae658b84478bb097cd6bc0de3, type: 3}
---- !u!4 &8726107583228563315 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5781659658686017457, guid: 374a403ae658b84478bb097cd6bc0de3,
-    type: 3}
-  m_PrefabInstance: {fileID: 2964996169341722818}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &8726107583228563314 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5781659658686017456, guid: 374a403ae658b84478bb097cd6bc0de3,
+    type: 3}
+  m_PrefabInstance: {fileID: 2964996169341722818}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &8726107583228563315 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5781659658686017457, guid: 374a403ae658b84478bb097cd6bc0de3,
     type: 3}
   m_PrefabInstance: {fileID: 2964996169341722818}
   m_PrefabAsset: {fileID: 0}

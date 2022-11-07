@@ -16,7 +16,7 @@ public class MainController : MonoBehaviour
 
     public ProgressBar distanceBar;
 
-    
+    public int Level { get => level; set => level = value; }
 
     private void Awake()
     {

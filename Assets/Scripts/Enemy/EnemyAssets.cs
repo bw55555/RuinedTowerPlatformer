@@ -19,14 +19,16 @@ public class EnemyAssets : MonoBehaviour
         Instance = this;
     }
 
-    public void createEnemy(EnemyType type, float xpos, float ypos)
+    public GameObject createEnemy(EnemyType type, float xpos, float ypos)
     {
         switch (type)
         {
-            case EnemyType.Slime: Instantiate(slime, new Vector3(xpos + 0.5f, ypos + 0.5f, 0), Quaternion.identity); return;
-            case EnemyType.Skeleton: Instantiate(skeleton, new Vector3(xpos + 0.5f, ypos + 1.5f, 0), Quaternion.identity); return;
-            case EnemyType.Knight: Instantiate(knight, new Vector3(xpos + 1f, ypos, 0), Quaternion.identity); return;
-            case EnemyType.Demon: Instantiate(demon, new Vector3(xpos + 1f, ypos, 0), Quaternion.identity); return;
+            case EnemyType.Slime: return Instantiate(slime, new Vector3(xpos + 0.5f, ypos + 0.5f, 0), Quaternion.identity);
+            case EnemyType.Skeleton: return Instantiate(skeleton, new Vector3(xpos + 0.5f, ypos + 1.5f, 0), Quaternion.identity);
+            case EnemyType.Knight: return Instantiate(knight, new Vector3(xpos + 1f, ypos, 0), Quaternion.identity);
+            case EnemyType.Demon: return Instantiate(demon, new Vector3(xpos + 1f, ypos, 0), Quaternion.identity);
         }
+
+        return null;
     }
 }

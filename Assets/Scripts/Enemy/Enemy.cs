@@ -6,9 +6,15 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    public int maxHealth = 100;
-    public int attack = 10;
+    public int base_health = 100;
+    public int health_scaling = 10;
+    public int base_attack = 10;
+    public int attack_scaling = 2;
     public int level = 1;
+
+    private int maxHealth;
+
+    private int attack;
 
     private int currentHealth;
 
@@ -16,13 +22,23 @@ public class Enemy : MonoBehaviour
 
     private float maxFlashTime = 0.3f;
     public int CurrentHealth { get => currentHealth; set => currentHealth = value; }
+    public int Attack { get => attack; set => attack = value; }
 
     private void Awake()
     {
         currentHealth = maxHealth;
+        spawn(MainController.Instance.Level);
     }
     
     // Update is called once per frame
+
+    public void spawn(int level)
+    {
+        this.level = level;
+        attack = base_attack + attack_scaling * (level - 1);
+        maxHealth = base_health + health_scaling * (level - 1);
+        currentHealth = maxHealth;
+    }
     public void TakeDamage(int damage)
     {
         

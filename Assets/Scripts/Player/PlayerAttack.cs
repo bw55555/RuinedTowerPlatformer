@@ -40,7 +40,7 @@ public class PlayerAttack : MonoBehaviour
         if (enemy != null)
         {
             Debug.Log("something is happening");
-            playerInfo.takeDamage(enemy.attack);
+            playerInfo.takeDamage(enemy.Attack);
         }
     }
 
@@ -49,7 +49,7 @@ public class PlayerAttack : MonoBehaviour
         Enemy enemy = collision.collider.gameObject.GetComponent<Enemy>();
         if (enemy != null)
         {
-            playerInfo.takeDamage(enemy.attack);
+            playerInfo.takeDamage(enemy.Attack);
         }
     }
 
