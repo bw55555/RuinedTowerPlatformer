@@ -4,51 +4,39 @@ using UnityEngine;
 
 public class RoomGenerate : MonoBehaviour
 {
-    public int width = 56;
-    public int height;
+    private GameObject monsterChoice;
 
-    public int enemy_density = 5;
-    public int enemy_spacing = 3;
-    public int flying_enemy_density = 15;
-    public int knight_enemy_density = 10;
-    public int demon_enemy_chance = 5;
-    public int knight_enemy_chance = 10;
-
-    private List<List<TerrainObject>> grid = new List<List<TerrainObject>>();
-
-    public int getGridHeight()
+    public GameObject knightPrefab;
+    public GameObject demonPrefab;
+    public GameObject slimePrefab;
+    public GameObject skeletonPrefab;
+    private void Start()
     {
-        return grid.Count;
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        //createTerrain();
-    }
-
-    public void createTerrain()
-    {
-        instantiate();
-    }
-
-    bool equals(TerrainType x, TerrainType y)
-    {
-        return x == y || x == TerrainType.Any || y == TerrainType.Any;
-    }
-
-    void instantiate()
-    {
-        for (int i = 0; i < grid.Count; i++)
+        if (gameObject.tag.Equals("MonsterRoom"))
         {
-            for (int j = 0; j < width; j++)
+            int monsterNum = Random.Range(1, 5);
+            if (monsterNum == 1)
             {
-                if (grid[i][j] != null)
-                {
-                    //grid[i][j].setPos(i * 10, j * 10);
-                    grid[i][j].instantiate();
-                }
+                monsterChoice = knightPrefab;
             }
+            else if (monsterNum == 2)
+            {
+                monsterChoice = demonPrefab;
+            }
+            else if (monsterNum == 3)
+            {
+                monsterChoice = slimePrefab;
+            }
+            else if (monsterNum == 4)
+            {
+                monsterChoice = skeletonPrefab;
+            }
+            float xPos = gameObject.transform.position.x;
+            float yPos = gameObject.transform.position.y;
+            Instantiate(monsterChoice, new Vector3(xPos + 1.0f, yPos + 0.5f, 0), Quaternion.identity);
+            Instantiate(monsterChoice, new Vector3(xPos + 2.0f, yPos + 0.5f, 0), Quaternion.identity);
+            Instantiate(monsterChoice, new Vector3(xPos - 1.0f, yPos + 0.5f, 0), Quaternion.identity);
+            Instantiate(monsterChoice, new Vector3(xPos - 2.0f, yPos + 0.5f, 0), Quaternion.identity);
         }
     }
 }

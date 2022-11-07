@@ -31,7 +31,7 @@ public class SideDoor : MonoBehaviour
 
         if (collision.gameObject.tag.Equals("Player") && !Checked && Input.GetKeyDown(KeyCode.E))
         {
-            int roomNum = Random.Range(1, 2);
+            int roomNum = Random.Range(2, 3);
             if (roomNum == 0)
             {
                 roomGenerationPrefab = chestRoomPrefab;

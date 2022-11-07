@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 8192209037999339821}
   m_Layer: 0
   m_Name: monster room
-  m_TagString: Untagged
+  m_TagString: MonsterRoom
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -97,14 +97,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93e040be38266d04db63b6fa3cc64e2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  width: 56
-  height: 0
-  enemy_density: 5
-  enemy_spacing: 3
-  flying_enemy_density: 15
-  knight_enemy_density: 10
-  demon_enemy_chance: 5
-  knight_enemy_chance: 10
+  knightPrefab: {fileID: 7228706820069221286, guid: 0d65e3cd9a85c864c9a8ae67e3f0574f,
+    type: 3}
+  demonPrefab: {fileID: 327215389964425182, guid: 696709670619b3949afddf92c57bd17e,
+    type: 3}
+  slimePrefab: {fileID: 2184678531303752231, guid: 8daa20765ba7cbf45b04d72f652ea96a,
+    type: 3}
+  skeletonPrefab: {fileID: 7020283686449906759, guid: 5a1d719d0958cbf46aee33332d119e73,
+    type: 3}
 --- !u!61 &2158848460722713381
 BoxCollider2D:
   m_ObjectHideFlags: 0
