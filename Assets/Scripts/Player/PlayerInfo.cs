@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerInfo : MonoBehaviour
 {
@@ -29,9 +30,12 @@ public class PlayerInfo : MonoBehaviour
     private float speedBeforeLanding;
     private float GetVerticalSpeed() => rb2D.velocity.y;
 
+    private Animator anim;
+
     private void Awake()
     {
         rb2D = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
     }
 
     public void setIframes(float iframes)
@@ -145,6 +149,8 @@ public class PlayerInfo : MonoBehaviour
             return; 
         }
         //death logic here
+        anim.SetTrigger("dead");
+        SceneManager.LoadScene("GameOver");
         score = 0;
     }
 }
