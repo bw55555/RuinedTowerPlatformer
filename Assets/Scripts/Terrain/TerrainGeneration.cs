@@ -322,6 +322,7 @@ public class TerrainGeneration : MonoBehaviour
                 //Debug.Log("RandomLoc:" + randomLoc.x + " " + randomLoc.y);
                 grid[randomLoc.x + 1][randomLoc.y] = new Air(randomLoc + new Vector2Int(1, 0), false);
                 grid[randomLoc.x + 2][randomLoc.y] = new Door(randomLoc + new Vector2Int(2, 0));
+                Debug.Log("Generate me a door please " + randomLoc);
                 currLine = randomLoc.x;
             }
             
