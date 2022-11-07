@@ -64,6 +64,7 @@ public class SideDoor : MonoBehaviour
             roomGeneration = Instantiate(roomGenerationPrefab, new Vector3(xPos, yPos + 4, player.position.z + 1), player.rotation).GetComponent<RoomGenerate>();
             player.position = new Vector3(player.position.x - 92, player.position.y, player.position.z);
             Checked = true;
+            SoundManager.Instance.playSound(SoundManager.Instance.open_door);
             Instantiate(torch, new Vector3Int(xPos - 5, yPos, 0), Quaternion.identity);
             Instantiate(torch, new Vector3Int(xPos + 5, yPos, 0), Quaternion.identity);
         }
