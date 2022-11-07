@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class MainController : MonoBehaviour
 {
@@ -18,6 +19,7 @@ public class MainController : MonoBehaviour
 
     public ProgressBar distanceBar;
 
+    public UnityEvent toNextLevel;
     public int Level { get => level; set => level = value; }
 
     private void Awake()
