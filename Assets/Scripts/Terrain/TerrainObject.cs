@@ -7,6 +7,7 @@ public enum TerrainType
     Platform,
     Vine,
     Door,
+    NextLevelDoor,
     Wall,
     Torch,
     EnemySpawnLoc,
@@ -40,9 +41,9 @@ abstract public class TerrainObject
         return this.overwritable;
     }
 
-    virtual public void instantiate()
+    virtual public void instantiate(GameObject parent)
     {
-        TerrainAssets.Instance.createObject(getType(), gridPos.y, -gridPos.x);
+        TerrainAssets.Instance.createObject(getType(), parent, gridPos.y, -gridPos.x);
     }
 
     abstract public TerrainType getType();

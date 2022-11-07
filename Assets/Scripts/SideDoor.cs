@@ -28,10 +28,19 @@ public class SideDoor : MonoBehaviour
 
     void OnTriggerStay2D(Collider2D collision)
     {
+        checkEnterRoom(collision);
+    }
 
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        checkEnterRoom(collision);
+    }
+
+    void checkEnterRoom(Collider2D collision)
+    {
         if (collision.gameObject.tag.Equals("Player") && !Checked && Input.GetKeyDown(KeyCode.E))
         {
-            int roomNum = Random.Range(0, 4);
+            int roomNum = Random.Range(2, 4);
             if (roomNum == 0)
             {
                 roomGenerationPrefab = chestRoomPrefab;
@@ -52,13 +61,11 @@ public class SideDoor : MonoBehaviour
             MainController.Instance.lastPosition = gameObject.transform;
             int xPos = Mathf.RoundToInt(player.position.x - 100);
             int yPos = Mathf.RoundToInt(player.position.y);
-            roomGeneration = Instantiate(roomGenerationPrefab, new Vector3(xPos, yPos, player.position.z + 1), player.rotation).GetComponent<RoomGenerate>();
-            player.position = new Vector3(player.position.x - 92, player.position.y - 2, player.position.z);
+            roomGeneration = Instantiate(roomGenerationPrefab, new Vector3(xPos, yPos + 4, player.position.z + 1), player.rotation).GetComponent<RoomGenerate>();
+            player.position = new Vector3(player.position.x - 92, player.position.y, player.position.z);
             Checked = true;
             Instantiate(torch, new Vector3Int(xPos - 5, yPos, 0), Quaternion.identity);
             Instantiate(torch, new Vector3Int(xPos + 5, yPos, 0), Quaternion.identity);
         }
     }
-
-    
 }

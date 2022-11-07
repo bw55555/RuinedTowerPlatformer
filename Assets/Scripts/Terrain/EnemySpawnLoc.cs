@@ -27,7 +27,7 @@ public class EnemySpawnLoc : TerrainObject
     }
     
     override
-        public void instantiate()
+        public void instantiate(GameObject parent)
     {
         EnemyAssets.Instance.createEnemy(enemyType, gridPos.y, -gridPos.x);
     }

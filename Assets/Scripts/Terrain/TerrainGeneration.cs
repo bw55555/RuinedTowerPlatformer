@@ -127,6 +127,9 @@ public class TerrainGeneration : MonoBehaviour
             grid[currHeight + 3][j] = new Torch(new Vector2Int(currHeight + 1, j));
         }
 
+        int middle = width / 2;
+        grid[grid.Count - 1][middle - 1] = new NextLevelDoor(new Vector2Int(grid.Count - 1, middle - 1));
+
         for (int i = 0; i < 5; i++)
         {
             grid.Add(new List<TerrainObject>());
@@ -135,6 +138,8 @@ public class TerrainGeneration : MonoBehaviour
                 grid[grid.Count - 1].Add(new Wall(new Vector2Int(grid.Count - 1, j)));
             }
         }
+
+        
 
         generateWalls(currHeight, grid.Count);
     }
@@ -425,7 +430,7 @@ public class TerrainGeneration : MonoBehaviour
                 if (grid[i][j] != null)
                 {
                     //grid[i][j].setPos(i * 10, j * 10);
-                    grid[i][j].instantiate();
+                    grid[i][j].instantiate(gameObject);
                 }
             }
         }

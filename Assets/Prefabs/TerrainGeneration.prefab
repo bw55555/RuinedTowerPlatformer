@@ -417,6 +417,8 @@ MonoBehaviour:
   backgroundTile: {fileID: 11400000, guid: e38994da8c0b6fc41a95fff3ee8078f4, type: 2}
   torch: {fileID: 6043205147425256754, guid: 5d2eddd7cab88094f832b4386c4e01e6, type: 3}
   door: {fileID: 2238554693658992109, guid: 82bf3ee87bf104a44b47df814cfdd207, type: 3}
+  nextLevelDoor: {fileID: 4427846318993055259, guid: 64eaaa1ca0199bf4e8d58055ce2fe882,
+    type: 3}
   platformTileMap: {fileID: 2577608042568152007}
   backgroundTileMap: {fileID: 2577608043517506152}
 --- !u!1 &2577608043517506155
