@@ -24,6 +24,12 @@ MonoImporter:
   - music2: {fileID: 8300000, guid: a3611a0471855aa489ec3cbcfaada92c, type: 3}
   - shop_music: {fileID: 8300000, guid: b5aef8e152f02684b9d1118887b19d75, type: 3}
   - titlescreen_music: {fileID: 8300000, guid: e7c5ee2b03fb13b4b8fb36782e7c7fe1, type: 3}
+  - next_level: {fileID: 8300000, guid: 98c7312c9091a0744867e772cf20f255, type: 3}
+  - open_chest: {fileID: 8300000, guid: 50a925fd8014a314c8ce44ec5d02b9ab, type: 3}
+  - open_door: {fileID: 8300000, guid: ff1ee419a9e728d4fbd0daf36e1b05ce, type: 3}
+  - UI_button_pressed: {fileID: 8300000, guid: 1b733911c621fcc4fbf91673acacd9df, type: 3}
+  - UI_button_go_back: {fileID: 8300000, guid: 64d9d59772973434091029c3941ddf21, type: 3}
+  - use_rope: {fileID: 8300000, guid: efc573cfc5b810d4ca517ed2d9d59c9c, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
