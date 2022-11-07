@@ -101,12 +101,18 @@ public class TerrainGeneration : MonoBehaviour
         {
             grid[8][middle + 1 + i] = new Platform(new Vector2Int(8, middle + 1 + i));
         }
+
+        grid[6][middle - 6] = new Torch(new Vector2Int(6, middle - 6));
+        grid[2][middle - 3] = new Torch(new Vector2Int(2, middle - 3));
+        grid[2][middle + 2] = new Torch(new Vector2Int(2, middle + 2));
+        grid[6][middle + 5] = new Torch(new Vector2Int(6, middle + 5));
+        
     }
 
     void generateSectionEnd()
     {
         int currHeight = grid.Count;
-        for (int i = 0;i<5;i++)
+        for (int i = 0;i<7;i++)
         {
             grid.Add(new List<TerrainObject>());
             for (int j = 0; j < width; j++)
@@ -114,6 +120,11 @@ public class TerrainGeneration : MonoBehaviour
                 grid[grid.Count - 1].Add(new Empty());
             }
 
+        }
+
+        for (int j = 2;j < width; j+= 5)
+        {
+            grid[currHeight + 3][j] = new Torch(new Vector2Int(currHeight + 1, j));
         }
 
         for (int i = 0; i < 5; i++)
