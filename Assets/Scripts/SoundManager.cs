@@ -20,7 +20,7 @@ public class SoundManager : MonoBehaviour
     public AudioClip slime_attack;
     public AudioClip Slime_jump;
     public AudioClip enemy_death;
-
+    AudioSource theSource;
 
     private AudioSource soundEffectAudio;
     // Start is called before the first frame update
@@ -38,12 +38,13 @@ public class SoundManager : MonoBehaviour
             Destroy(gameObject);
         }
 
-        AudioSource theSource = GetComponent<AudioSource>();
+        theSource = GetComponent<AudioSource>();
         soundEffectAudio = theSource;
     }
     public void playSound(AudioClip clip)
     {
-        soundEffectAudio.PlayOneShot(clip);
+        Debug.Log(clip == null);
+        theSource.PlayOneShot(clip, 1.0f);
     }
 
     // Update is called once per frame
