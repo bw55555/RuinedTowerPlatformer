@@ -419,6 +419,7 @@ MonoBehaviour:
   door: {fileID: 2238554693658992109, guid: 82bf3ee87bf104a44b47df814cfdd207, type: 3}
   nextLevelDoor: {fileID: 4427846318993055259, guid: 64eaaa1ca0199bf4e8d58055ce2fe882,
     type: 3}
+  shop: {fileID: 7325358562814438964, guid: 06b48c21b074ef54cbf838266c0377a8, type: 3}
   platformTileMap: {fileID: 2577608042568152007}
   backgroundTileMap: {fileID: 2577608043517506152}
 --- !u!1 &2577608043517506155

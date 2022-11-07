@@ -42,10 +42,10 @@ public class SkillContainer : MonoBehaviour
 
         getSkill(SkillType.Attack).Active = true;
         getSkill(SkillType.DoubleJump).Active = true;
-        getSkill(SkillType.Dash).Active = true;
-        getSkill(SkillType.Thornmail).Active = true;
-        getSkill(SkillType.Extra_Damage).Active = true;
-        getSkill(SkillType.Invincibility).Active = true;
+        //getSkill(SkillType.Dash).Active = true;
+        //getSkill(SkillType.Thornmail).Active = true;
+        //getSkill(SkillType.Extra_Damage).Active = true;
+        //getSkill(SkillType.Invincibility).Active = true;
     }
 
     void Start()
