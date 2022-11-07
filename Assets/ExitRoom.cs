@@ -31,7 +31,7 @@ public class ExitRoom : MonoBehaviour
         {
             float xPos = MainController.Instance.lastPosition.position.x;
             float yPos = MainController.Instance.lastPosition.position.y;
-            player.position = new Vector3(xPos, yPos, player.position.z);
+            player.position = new Vector3(xPos + 1, yPos + 1, player.position.z);
         }
     }
 
