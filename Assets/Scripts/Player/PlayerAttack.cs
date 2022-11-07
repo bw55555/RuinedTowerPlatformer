@@ -35,16 +35,18 @@ public class PlayerAttack : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Enemy enemy = collision.gameObject.GetComponent<Enemy>();
+        Enemy enemy = collision.collider.gameObject.GetComponent<Enemy>();
+        Debug.Log("Collision Detected", collision.otherCollider);
         if (enemy != null)
         {
+            Debug.Log("something is happening");
             playerInfo.takeDamage(enemy.attack);
         }
     }
 
     private void OnCollisionStay2D(Collision2D collision)
     {
-        Enemy enemy = collision.gameObject.GetComponent<Enemy>();
+        Enemy enemy = collision.collider.gameObject.GetComponent<Enemy>();
         if (enemy != null)
         {
             playerInfo.takeDamage(enemy.attack);

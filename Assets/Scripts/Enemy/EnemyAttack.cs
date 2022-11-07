@@ -39,7 +39,6 @@ public class EnemyAttack : MonoBehaviour
     private void FixedUpdate()
     {
         attackCd -= Time.deltaTime;
-        Debug.Log(shouldAttack());
         if (attackCd <= 0 && shouldAttack())
         {
             attackCd = minTimeBetweenAttacks;
